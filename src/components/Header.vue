@@ -7,14 +7,19 @@
     <img src="../assets/user.png" class="mx-5"/>
     <h4>Etienne Noroy</h4>
     <h5>etienne.noroy@corpus-solutions.fr</h5>
-    <button class="btn btn-primary px-5">Se déconnecter</button>
+    <button class="btn btn-primary px-5" @click="disconnect()">Se déconnecter</button>
     </div>
 </header>
 </template>
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    methods : {
+        disconnect: function(){
+            this.$router.push("/login");
+        }
+    }
 }
 </script>
 

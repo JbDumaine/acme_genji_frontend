@@ -2,7 +2,7 @@
 <div class="container">
     <div>
         <b-card-group deck>
-            <b-card header="Produits" header-tag="header" title="Produits" @click="productsPage()">
+            <b-card header="Produits" header-tag="header" title="Produits" @click="productsMenu()">
                 <div class="row">
                     <div class="col-8">
                         <div>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Commandes" header-tag="header" title="Commandes">
+            <b-card header="Commandes" header-tag="header" title="Commandes" @click="commandsMenu()">
                 <div class="row">
                     <div class="col-8">
                         <div>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Réceptions" header-tag="header" title="Receptions">
+            <b-card header="Réceptions" header-tag="header" title="Receptions" @click="receptionsMenu()">
                 <div class="row">
                     <div class="col-8">
                         <div>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Fournisseurs" header-tag="header" title="Fournisseurs">
+            <b-card header="Fournisseurs" header-tag="header" title="Fournisseurs" @click="suppliersMenu()">
                 <div class="row">
                     <div class="col-8">
                         <div>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Catégories" header-tag="header" title="Catégories">
+            <b-card header="Catégories" header-tag="header" title="Catégories" @click="categoriesMenu()">
                 <div class="row">
                     <div class="col-8">
                         <div>
@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Utilisateurs" header-tag="header" title="Utilisateurs">
+            <b-card header="Utilisateurs" header-tag="header" title="Utilisateurs" @click="usersMenu()">
                 <div class="row">
                     <div class="col-8">
                         <div>
@@ -133,6 +133,7 @@
 
 h2 {
     text-align: center;
+    font-size: 20px;
 }
 
 h4 {
@@ -147,11 +148,37 @@ h5 {
 </style>
 <script>
 export default {
-    name: 'App',
+    name: 'HomeAcme',
+
     methods:{
-        productsPage: function(){
-            this.$router.push('/product')
-        }
+        redirectToMenu: function(){ 
+
+            this.$router.push('/menu')
+        },
+        productsMenu : function(){
+
+            this.redirectToMenu();
+        },
+
+        commandsMenu : function(){
+            this.redirectToMenu();
+        },
+
+        suppliersMenu : function(){
+            this.redirectToMenu();
+        },
+
+        usersMenu : function(){
+            this.redirectToMenu();
+        },
+
+        categoriesMenu : function(){
+            this.redirectToMenu();
+        },
+
+        receptionsMenu : function(){
+            this.redirectToMenu();
+        }        
     }
 }
 </script>

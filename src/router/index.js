@@ -15,14 +15,9 @@ const routes = [
         component: () => import('../views/Login.vue'),
     },
     {
-        path:   '/product',
-        name: 'Products',
-        component: () => import('../views/Products.vue'),
-    },
-    {
-        path:   '/insc',
-        name: 'Inscription',
-        component: () => import('../views/Inscription.vue'),
+        path:   '/menu',
+        name: 'Menu',
+        component: () => import('../views/MenuAcme.vue'),
     },
 ];
 
