@@ -2,8 +2,8 @@
 <div class="container">
     <div>
         <b-card-group deck>
-            <b-card header="Produits" header-tag="header" title="Produits" @click="productsMenu()">
-                <div class="row">
+            <b-card header="Produits" header-tag="header" title="Produits" @click="redirectToMenu('products')">
+                <div class="row align-items-center">
                     <div class="col-8">
                         <div>
                             <img />
@@ -21,8 +21,8 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Commandes" header-tag="header" title="Commandes" @click="commandsMenu()">
-                <div class="row">
+            <b-card header="Commandes" header-tag="header" title="Commandes" @click="redirectToMenu('commands')">
+                <div class="row align-items-center">
                     <div class="col-8">
                         <div>
                             <img />
@@ -40,8 +40,8 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Réceptions" header-tag="header" title="Receptions" @click="receptionsMenu()">
-                <div class="row">
+            <b-card header="Réceptions" header-tag="header" title="Receptions" @click="redirectToMenu('receptions')">
+                <div class="row align-items-center">
                     <div class="col-8">
                         <div>
                             <img />
@@ -59,8 +59,8 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Fournisseurs" header-tag="header" title="Fournisseurs" @click="suppliersMenu()">
-                <div class="row">
+            <b-card header="Fournisseurs" header-tag="header" title="Fournisseurs" @click="redirectToMenu('suppliers')">
+                <div class="row align-items-center">
                     <div class="col-8">
                         <div>
                             <img />
@@ -78,8 +78,8 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Catégories" header-tag="header" title="Catégories" @click="categoriesMenu()">
-                <div class="row">
+            <b-card header="Catégories" header-tag="header" title="Catégories" @click="redirectToMenu('categories')">
+                <div class="row align-items-center">
                     <div class="col-8">
                         <div>
                             <img />
@@ -97,8 +97,8 @@
                     </div>
                 </div>
             </b-card>
-            <b-card header="Utilisateurs" header-tag="header" title="Utilisateurs" @click="usersMenu()">
-                <div class="row">
+            <b-card header="Utilisateurs" header-tag="header" title="Utilisateurs" @click="redirectToMenu('users')">
+                <div class="row align-items-center">
                     <div class="col-8">
                         <div>
                             <img />
@@ -145,40 +145,21 @@ h4 {
 h5 {
     font-size: 14px;
 }
+img{
+    width : 30px;
+    height: 30px;
+}
 </style>
+
 <script>
 export default {
     name: 'HomeAcme',
 
-    methods:{
-        redirectToMenu: function(){ 
-
-            this.$router.push('/menu')
-        },
-        productsMenu : function(){
-
-            this.redirectToMenu();
-        },
-
-        commandsMenu : function(){
-            this.redirectToMenu();
-        },
-
-        suppliersMenu : function(){
-            this.redirectToMenu();
-        },
-
-        usersMenu : function(){
-            this.redirectToMenu();
-        },
-
-        categoriesMenu : function(){
-            this.redirectToMenu();
-        },
-
-        receptionsMenu : function(){
-            this.redirectToMenu();
-        }        
+    methods: {
+        redirectToMenu: function (name) {
+            this.$store.commit('setActiveMenu',name);
+            this.$router.push('/menu/')
+        }
     }
 }
 </script>

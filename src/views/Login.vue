@@ -7,10 +7,10 @@
         <div class="d-flex justify-content-center">
             <img src="../assets/image_not_found.png"/>
         </div>
-        <b-form-group id="fieldset-1" label="id" label-for="identifier" class="m-3">
+        <b-form-group id="fieldset-1" label="Identifiant" label-for="identifier" class="m-3">
             <b-form-input id="identifier" v-model="name" :state="state" trim></b-form-input>
         </b-form-group>
-        <b-form-group id="fieldset-1" label="password" label-for="wordPass" class="m-3">
+        <b-form-group id="fieldset-1" label="Mot de passe" label-for="wordPass" class="m-3">
             <b-form-input id="password" v-model="name" :state="state" trim></b-form-input>
             <a href="#">Mot de passe oublié ?</a>
         </b-form-group>

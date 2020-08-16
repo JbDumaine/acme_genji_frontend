@@ -5,9 +5,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        activePage :"",
+        activeMenu: "",
     },
-    mutations:{
+    mutations: {
+
+        setActiveMenu(state, id) {
+            state.activeMenu = id;
+        }
 
     }
 });
