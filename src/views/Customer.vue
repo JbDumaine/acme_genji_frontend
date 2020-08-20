@@ -105,6 +105,9 @@ export default Vue.extend({
     .img-product{
         height: 85%;
         background: url(../assets/bureau_product.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
     .img-product > img{
