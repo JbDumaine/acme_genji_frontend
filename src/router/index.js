@@ -29,6 +29,12 @@ const routes = [
         path:   '/basket',
         name: 'Panier',
         component: () => import('../views/Basket.vue'),
+    },
+
+    {
+        path:   '/product-details',
+        name: 'ProductDetails',
+        component: () => import('../views/ProductDetails.vue'),
     }
 ];
 
