@@ -2,7 +2,9 @@
     <div class="container">
         <h1>Catégorie</h1>
         <div class="card-wrapper">
+            
              <b-card
+                @click="ProductDetails()"
                 header="featured"
                 tag="article"
                 
@@ -17,6 +19,7 @@
                 
             </b-card>
             <b-card
+                @click="ProductDetails()"
                 header="featured"
                 tag="article"
                 
@@ -31,6 +34,7 @@
                 
             </b-card>
             <b-card
+                @click="ProductDetails()"
                 header="featured"
                 tag="article"
                 
@@ -45,6 +49,7 @@
                 
             </b-card>
             <b-card
+                @click="ProductDetails()"
                 header="featured"
                 tag="article"
                 
@@ -67,7 +72,11 @@ import Vue from 'vue'
 
 export default Vue.extend({
     name:"Customer",
-    
+    methods: {
+        ProductDetails: function(){
+            this.$router.push("/product-details");
+        }
+    }
 })
 </script>
 
