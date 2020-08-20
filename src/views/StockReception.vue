@@ -2,6 +2,8 @@
     <div class="stockReceptionContainer">
         <b-button variant="light" @click="addProduct()" id="btn-add-stock-recption"><img src="../assets/icon-plus-64.png" alt=""></b-button>
         <StockReceptionForm/>
+        <div class="listStockReception"></div>
+        <b-button variant="primary" id="btn-add-stock-reception">Ajouter</b-button>
     </div>
 </template>
 
@@ -17,7 +19,7 @@ export default Vue.extend({
     },
     methods: {
         addProduct:function(){
-           let container = document.querySelector('.stockReceptionContainer');
+           let container = document.querySelector('.listStockReception');
            var ComponentClass = Vue.extend(StockReceptionForm)
            var instance = new ComponentClass()
             instance.$mount() // pass nothing
@@ -40,5 +42,10 @@ export default Vue.extend({
 
     #btn-add-stock-recption > img{
         width: 20px;
+    }
+
+    #btn-add-stock-reception{
+        margin-left: 50%;
+        margin-top: 5%;
     }
 </style>
