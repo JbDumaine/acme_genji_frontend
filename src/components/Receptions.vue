@@ -1,57 +1,38 @@
 <template>
 <div id="receptions">
-    <div class="row justify-content-between mb-5">
-        <div class="my-3">
-            <label class="mr-2">Filtrer par</label>
-            <select class="px-1">
-                <option>Numéro de réception</option>
-                <option>Date de réception</option>
-                <option>Fournisseur</option>
-            </select>
-        </div>
-        <div class="m-3">
-            <input class="mr-2" />
-            <button class="btn btn-primary"> Rechercher</button>
-        </div>
+    <div class="row align-items-center justify-content-between border-bottom mb-2">
+        <div class="col-4 "><b>Numéro de réception</b></div>
+        <div class="col-4 "><b>Date de réception</b></div>
+        <div class="col-4 "><b>Fournisseur</b></div>
     </div>
 
-    <div>
-        <div class="row align-items-center justify-content-between border-bottom mb-2">
-            <div class="col-4 p-0"><b>Numéro de réception</b></div>
-            <div class="col-4 p-0"><b>Date de réception</b></div>
-            <div class="col-4 p-0"><b>Fournisseur</b></div>
-        </div>
-
-        <div class="reception row align-items-center justify-content-between mb-3 border-bottom" @click="receptionPage(1)">
-            <div class="col-4 row align-items-center">
-                001
+    <div v-for="reception in receptions" :key="reception.id">
+        <div class="reception row align-items-center justify-content-between mb-3 border-bottom" @click="receptionPage(reception.id)">
+            <div class="col-4">
+                {{reception.reception_number}}
             </div>
             <div class="col-4">
-                20/08/2020
+                {{reception.reception_date}}
             </div>
             <div class="col-4">
-                <a @click="supplierPage(1)">GENJY</a>
-            </div>
-        </div>
-
-        <div class="reception row align-items-center justify-content-between mb-3 border-bottom" @click="receptionPage(2)">
-            <div class="col-4 row align-items-center">
-                002
-            </div>
-            <div class="col-4">
-                23/08/2020
-            </div>
-            <div class="col-4">
-                <a @click="supplierPage(2)">GENJY_ACME</a>
+                {{reception.supplier_id}}
             </div>
         </div>
     </div>
-
 </div>
 </template>
+
 <script>
 export default {
     name: 'Receptions',
+    data: function() {
+        return {
+            receptions: [
+                {id:1, reception_number: "0001", reception_date:"01/01/2020", supplier_id: 1},
+                {id:2, reception_number: "0002", reception_date:"02/02/2020", supplier_id: 2}
+            ]
+        };
+    },
     methods : {
         receptionPage: function(id) {
             this.$router.push(`/reception/${id}`);
