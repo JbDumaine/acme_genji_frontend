@@ -23,7 +23,7 @@
 
         <div class="command row align-items-center justify-content-between mb-3 border-bottom" @click="commandPage(1)">
             <div class="col-4 row align-items-center">
-                <h5>Commande 10</h5>
+                Commande 10
             </div>
             <div class="col-4">
                 Prête
@@ -35,7 +35,7 @@
 
         <div class="command row align-items-center justify-content-between mb-3 border-bottom" @click="commandPage(2)">
             <div class="col-4 row align-items-center">
-                <h5>Commande 1000</h5>
+                Commande 1000
             </div>
             <div class="col-4">
                 Cloturée
@@ -53,14 +53,13 @@ export default {
     name: 'Commands',
     methods : {
         commandPage: function(id) {
-            this.$router.push(`/product/${id}`);
+            this.$router.push(`/command/${id}`);
         }
     }
 }
 </script>
 
 <style>
-
 img{
     width : 90px;
     height : 90px
