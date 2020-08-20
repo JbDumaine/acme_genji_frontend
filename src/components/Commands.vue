@@ -8,7 +8,7 @@
 
     <ul>
         <li v-for="command in commands" :key="command.id">
-            <div class="command row align-items-center justify-content-between mb-3 border-bottom" @click="commandPage(1)">
+            <div class="command row align-items-center justify-content-between mb-3 border-bottom" @click="commandPage(command.id)">
                 <div class="col-4">
                     {{command.commandNumber}}
                 </div>
@@ -31,7 +31,7 @@ export default {
         return {
             commands: [
                 {id:0, commandNumber: "0001", state: "Prête", store: "Toulouse"},
-                {id:0, commandNumber: "0002", state: "Cloturée", store: "Marseille"}
+                {id:1, commandNumber: "0002", state: "Cloturée", store: "Marseille"}
             ]
         }
     },
