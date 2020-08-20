@@ -16,24 +16,24 @@
 
     <div>
         <div class="row align-items-center justify-content-between border-bottom mb-2">
-            <div class="col-6 p-0"><b>Nom</b></div>
-            <div class="col-6 p-0"><b>Description</b></div>
+            <div class="col-2 p-0"><b>Nom</b></div>
+            <div class="col-10"><b>Description</b></div>
         </div>
 
-        <div class="categorie row align-items-center justify-content-between mb-3 border-bottom" @click="categoriePage(1)">
-            <div class="col-6 row align-items-center">
+        <div class="row align-items-center justify-content-between mb-3 border-bottom">
+            <div class="col-2 row align-items-center">
                 Crayon
             </div>
-            <div class="col-6">
+            <div class="col-10">
                 Bout de bois
             </div>
         </div>
 
-        <div class="categorie row align-items-center justify-content-between mb-3 border-bottom" @click="categoriePage(2)">
-            <div class="col-6 row align-items-center">
+        <div class="row align-items-center justify-content-between mb-3 border-bottom">
+            <div class="col-2 row align-items-center">
                 Papier
             </div>
-            <div class="col-6">
+            <div class="col-10">
                 Feuille blanche
             </div>
         </div>
@@ -45,12 +45,7 @@
 
 <script>
 export default {
-    name: 'Categories',
-    methods : {
-        categoriePage: function(id) {
-            this.$router.push(`/categorie/${id}`);
-        }
-    }
+    name: 'Categories'
 }
 </script>
 
@@ -58,8 +53,5 @@ export default {
 img{
     width : 90px;
     height : 90px
-}
-.categorie {
-    cursor : pointer;
 }
 </style>
