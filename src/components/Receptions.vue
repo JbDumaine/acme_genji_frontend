@@ -6,21 +6,19 @@
         <div class="col-4 "><b>Fournisseur</b></div>
     </div>
 
-    <ul>
-        <li v-for="reception in receptions" :key="reception.id">
-            <div class="reception row align-items-center justify-content-between mb-3 border-bottom" @click="receptionPage(reception.id)">
-                <div class="col-4">
-                    {{reception.reception_number}}
-                </div>
-                <div class="col-4">
-                    {{reception.reception_date}}
-                </div>
-                <div class="col-4">
-                    {{reception.supplier_id}}
-                </div>
+    <div v-for="reception in receptions" :key="reception.id">
+        <div class="reception row align-items-center justify-content-between mb-3 border-bottom" @click="receptionPage(reception.id)">
+            <div class="col-4">
+                {{reception.reception_number}}
             </div>
-        </li>
-    </ul>
+            <div class="col-4">
+                {{reception.reception_date}}
+            </div>
+            <div class="col-4">
+                {{reception.supplier_id}}
+            </div>
+        </div>
+    </div>
 </div>
 </template>
 

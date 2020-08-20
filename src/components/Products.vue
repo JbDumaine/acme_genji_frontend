@@ -14,32 +14,28 @@
         </div>
     </div>
 
-    <ul id="suppliers">
-        <li v-for="item in items" :key="item.id">
-            <h2>{{ item.name }}</h2>
-            <ul id="products">
-                <div class="row align-items-center justify-content-between border-bottom mb-2">
-                    <div class="col-4"><b>Nom</b></div>
-                    <div class="col-4 p-0"><b>Prix</b></div>
-                    <div class="col-4"><b>Quantité</b></div>
+    <div v-for="item in items" :key="item.id">
+        <h2>{{ item.name }}</h2>
+        <div class="row align-items-center justify-content-between border-bottom mb-2">
+            <div class="col-4"><b>Nom</b></div>
+            <div class="col-4 p-0"><b>Prix</b></div>
+            <div class="col-4"><b>Quantité</b></div>
+        </div>
+        <div v-for="product in item.products" :key="product.id">
+            <div class="product row align-items-center justify-content-between mb-3 border-bottom" @click="productPage(2)">
+                <div class="col-4 row align-items-center">
+                    <img src="../assets/image_not_found.png" class="mr-2" />
+                    <h5>{{ product.name }}</h5>
                 </div>
-                <li v-for="product in item.products" :key="product.id">
-                    <div class="product row align-items-center justify-content-between mb-3 border-bottom" @click="productPage(2)">
-                        <div class="col-4 row align-items-center">
-                            <img src="../assets/image_not_found.png" class="mr-2" />
-                            <h5>{{ product.name }}</h5>
-                        </div>
-                        <div class="col-4">
-                            {{ product.price }}€
-                        </div>
-                        <div class="col-4">
-                            {{ product.quantity }} pcs
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </li>
-    </ul>
+                <div class="col-4">
+                    {{ product.price }}€
+                </div>
+                <div class="col-4">
+                    {{ product.quantity }} pcs
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 </template>

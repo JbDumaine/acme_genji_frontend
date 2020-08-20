@@ -6,21 +6,19 @@
         <div class="col-4"><b>Store</b></div>
     </div>
 
-    <ul>
-        <li v-for="command in commands" :key="command.id">
-            <div class="command row align-items-center justify-content-between mb-3 border-bottom" @click="commandPage(command.id)">
-                <div class="col-4">
-                    {{command.commandNumber}}
-                </div>
-                <div class="col-4">
-                    {{command.state}}
-                </div>
-                <div class="col-4">
-                    {{command.store}}
-                </div>
+    <div v-for="command in commands" :key="command.id">
+        <div class="command row align-items-center justify-content-between mb-3 border-bottom" @click="commandPage(command.id)">
+            <div class="col-4">
+                {{command.commandNumber}}
             </div>
-        </li>
-    </ul>
+            <div class="col-4">
+                {{command.state}}
+            </div>
+            <div class="col-4">
+                {{command.store}}
+            </div>
+        </div>
+    </div>
 </div>
 </template>
 
