@@ -16,9 +16,9 @@
     <div>
 
         <div class="row align-items-center justify-content-between border-bottom mb-2">
-            <div class="col-4 p-0">Fournisseur 1</div>
-            <div class="col-4 p-0">Prix</div>
-            <div class="col-4">Quantité</div>
+            <div class="col-4 p-0"><b>Fournisseur 1</b></div>
+            <div class="col-4 p-0"><b>Prix</b></div>
+            <div class="col-4"><b>Quantité</b></div>
         </div>
 
         <div class="product row align-items-center justify-content-between mb-3 border-bottom" @click="productPage(1)">
@@ -53,8 +53,8 @@
 export default {
     name: 'Products',
     methods : {
-                productPage: function (id) {
-            this.$router.push(`/product/${id}`)
+        productPage: function (id) {
+            this.$router.push(`/product/${id}`);
         }
     }
 }
