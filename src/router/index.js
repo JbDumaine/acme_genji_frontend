@@ -19,6 +19,11 @@ const routes = [
         name: 'Menu',
         component: () => import('../views/MenuAcme.vue'),
     },
+    {
+        path:   '/customer-home',
+        name: 'Customer',
+        component: () => import('../views/Customer.vue'),
+    },
 ];
 
 const router = new VueRouter({
