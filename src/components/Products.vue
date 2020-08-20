@@ -14,10 +14,9 @@
         </div>
     </div>
 
-
     <ul id="suppliers">
         <li v-for="item in items" :key="item.id">
-            <h1>{{ item.name }}</h1>
+            <h2>{{ item.name }}</h2>
             <ul id="products">
                 <div class="row align-items-center justify-content-between border-bottom mb-2">
                     <div class="col-4"><b>Nom</b></div>
