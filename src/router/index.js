@@ -24,6 +24,12 @@ const routes = [
         name: 'Customer',
         component: () => import('../views/Customer.vue'),
     },
+
+    {
+        path:   '/basket',
+        name: 'Panier',
+        component: () => import('../views/Basket.vue'),
+    }
 ];
 
 const router = new VueRouter({
