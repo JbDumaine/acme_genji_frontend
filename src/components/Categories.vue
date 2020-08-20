@@ -62,5 +62,4 @@ img{
 .categorie {
     cursor : pointer;
 }
-
 </style>

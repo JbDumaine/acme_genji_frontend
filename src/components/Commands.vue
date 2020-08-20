@@ -60,7 +60,6 @@ export default {
 </script>
 
 <style>
-
 img{
     width : 90px;
     height : 90px
