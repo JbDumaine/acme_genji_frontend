@@ -6,7 +6,7 @@
         <div class="col-4 "><b>Fournisseur</b></div>
     </div>
 
-    <div v-for="reception in receptions" :key="reception.id">
+    <div v-for="reception in this.$store.state.receptions" :key="reception.id">
         <div class="reception row align-items-center justify-content-between mb-3 border-bottom" @click="receptionPage(reception.id)">
             <div class="col-4">
                 {{reception.reception_number}}
@@ -25,13 +25,8 @@
 <script>
 export default {
     name: 'Receptions',
-    data: function() {
-        return {
-            receptions: [
-                {id:1, reception_number: "0001", reception_date:"01/01/2020", supplier_id: 1},
-                {id:2, reception_number: "0002", reception_date:"02/02/2020", supplier_id: 2}
-            ]
-        };
+    created: function () {
+        this.$store.dispatch('getReceptions');
     },
     methods : {
         receptionPage: function(id) {
