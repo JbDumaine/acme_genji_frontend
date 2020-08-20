@@ -6,7 +6,7 @@
                 <img src="../assets/home.png" />
             </template>
         </b-tab>
-        <b-tab title="Général" :active="activeTab == '' || 'general'">
+        <b-tab title="Général" :active="activeTab == '' || activeTab == 'general'">
             <General />
         </b-tab>
         <b-tab title="Produits" :active="activeTab == 'products'">
