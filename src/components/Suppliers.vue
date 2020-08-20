@@ -15,7 +15,7 @@
                 {{supplier.address}}
             </div>
             <div class="col-4">
-                {{supplier.city_id}}
+                {{supplier.city.name}}
             </div>
         </div>
     </div>

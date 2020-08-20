@@ -12,10 +12,10 @@
                 {{command.command_number}}
             </div>
             <div class="col-4">
-                {{command.state_id}}
+                {{command.state.name}}
             </div>
             <div class="col-4">
-                {{command.store_id}}
+                {{command.store.name}}
             </div>
         </div>
     </div>

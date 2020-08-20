@@ -15,7 +15,7 @@
                 {{reception.reception_date}}
             </div>
             <div class="col-4">
-                {{reception.supplier_id}}
+                {{reception.supplier.name}}
             </div>
         </div>
     </div>
