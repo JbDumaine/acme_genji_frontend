@@ -59,6 +59,11 @@ const routes = [
         name: 'addStore',
         component: () => import('../views/AddStore.vue'),
     },
+    {
+        path:   '/add-user',
+        name: 'addUser',
+        component: () => import('../views/AddUser.vue'),
+    },
 
     {
         path:   '/update-store',
