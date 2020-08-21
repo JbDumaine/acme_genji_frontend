@@ -18,6 +18,8 @@ export default new Vuex.Store({
     //Bool
     invalidCredential: false,
 
+    userLogged: false,
+
     //Data :
     commands: null,
     suppliers: null,
@@ -26,7 +28,6 @@ export default new Vuex.Store({
     categories: null,
     receptions: null,
   },
-
   mutations: {
     setActiveMenu(state, id) {
       state.activeMenu = id;
@@ -46,6 +47,9 @@ export default new Vuex.Store({
     setUser(state, term) {
       state.user = term;
     },
+    setUserLogged(state, term) {
+      state.userLogged = term;
+    },
 
     // Getter/Setter pour les différentes vues
     setCommands(state, term) {
@@ -63,9 +67,8 @@ export default new Vuex.Store({
     setCategories(state, term) {
       state.categories = term;
     },
-    setCategory(state,category){
-        console.log(state.categories);
-        state.categories.push(category);
+    setCategory(state, category) {
+      state.categories.push(category);
     },
     setStores(state, term) {
       state.stores = term;
@@ -76,7 +79,7 @@ export default new Vuex.Store({
   },
 
   actions: {
-    authenticate(context, { email, password }) {
+    async authenticate(context, { email, password }) {
       let myInit = {
         method: "POST",
         headers: {
@@ -87,14 +90,18 @@ export default new Vuex.Store({
           password: password,
         }),
       };
-      fetch(AppConst.API_URL + AppConst.API_URI_LOGIN, myInit)
+      await fetch(AppConst.API_URL + AppConst.API_URI_LOGIN, myInit)
         .then((result) => result.json())
         .then((json) => {
           if (json.message === "Invalid Credentials") {
             return context.commit("setInvalidCredential", true);
           }
+
           context.commit("setUser", json.user);
           context.commit("setRequestToken", json.access_token);
+          localStorage.setItem("access_token", json.access_token);
+          localStorage.setItem("user", JSON.stringify(json.user));
+          context.commit("setUserLogged", true);
         })
         .catch((error) => {
           console.error(`Une erreur s'est produite sur le authenticate.`);

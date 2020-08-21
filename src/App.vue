@@ -1,6 +1,6 @@
 <template>
 <div id="app" class="mt-0">
-    <Header />
+    <Header v-if="this.$store.state.user != null" />
     <div class="container-fluid p-0 bottom">
         <router-view />
     </div>
@@ -17,6 +17,15 @@ export default {
     components: {
         Header,
         Footer
+    },
+    updated() {
+        if (this.$store.state.userLogged == false && !localStorage.getItem('access_token')) {
+            this.$router.push('/login')
+        } else if (this.$store.state.userLogged == false && localStorage.getItem('access_token')) {
+            this.$store.state.requestToken = localStorage.getItem('access_token');
+            this.$store.state.user = JSON.parse(localStorage.getItem('user'));
+            this.$store.state.userLogged = true;
+        }
     }
 }
 </script>
