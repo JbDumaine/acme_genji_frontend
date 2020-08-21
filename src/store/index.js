@@ -405,7 +405,7 @@ export default new Vuex.Store({
             fetch(AppConst.API_URL + "categories/" + categoryId, myInit)
                 .then(result => result.json())
                 .then((json) => {
-                   console.log('oui !' + json);
+                    console.log('oui !' + json);
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);
@@ -501,6 +501,40 @@ export default new Vuex.Store({
                 body: JSON.stringify(data),
             };
             fetch(AppConst.API_URL + "suppliers", myInit)
+                .then((result) => result.json())
+                .then((json) => {
+                    console.log(json);
+                    router.push("Menu");
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        addUser(context, data) {
+            let details = {
+                'first_name': data.firstname,
+                'last_name': data.lastname,
+                'email': data.email,
+                'password': data.password,
+                'password_confirmation': data.password
+            };
+            let formBody = [];
+            for (var property in details) {
+                var encodedKey = encodeURIComponent(property);
+                var encodedValue = encodeURIComponent(details[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
+            let myInit = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                    Authorization: `Bearer ${context.state.requestToken}`,
+                },
+                method: "POST",
+                body: formBody,
+            };
+            fetch(AppConst.API_URL + "register", myInit)
                 .then((result) => result.json())
                 .then((json) => {
                     console.log(json);
