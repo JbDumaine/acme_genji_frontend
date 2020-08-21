@@ -58,15 +58,7 @@ export default {
         Suppliers,
         Users
     },
-    created: function () {
-
-    },
-
     methods: {
-
-        created: function () {
-
-        },
         redirectToHome: function () {
             this.$router.push('/');
         }
