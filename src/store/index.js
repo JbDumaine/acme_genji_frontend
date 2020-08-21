@@ -270,7 +270,6 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
-
         getSuppliers(context) {
             let myInit = {
                 headers: {
@@ -305,7 +304,6 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
-
         getStores(context) {
             let myInit = {
                 headers: {
@@ -340,7 +338,6 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
-
         getCategories(context) {
             let myInit = {
                 headers: {
@@ -392,7 +389,6 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
-
         updateCategory(context, data) {
             let myInit = {
                 headers: {
@@ -415,8 +411,7 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
-
-        updateProducts(context, data) {
+        updateProduct(context, data) {
             let myInit = {
                 headers: {
                     "Content-Type": "application/json",
@@ -435,39 +430,6 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
-
-
-        deleteCategory(context, categoryId) {
-            let myInit = {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${context.state.requestToken}`,
-                },
-                method: "DELETE",
-            };
-            fetch(AppConst.API_URL + "categories/" + categoryId, myInit)
-                .then(result => result.json())
-                .catch((error) => {
-                    console.error(`Une erreur s'est produite`);
-                    console.log(error);
-                });
-        },
-
-        deleteStore(context, storeId) {
-            let myInit = {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${context.state.requestToken}`,
-                },
-                method: "DELETE",
-            };
-            fetch(AppConst.API_URL + "stores/" + storeId, myInit)
-                .then(result => result.json())
-                .catch((error) => {
-                    console.error(`Une erreur s'est produite`);
-                    console.log(error);
-                });
-        },
         updateStore(context, data) {
             let myInit = {
                 headers: {
@@ -478,6 +440,23 @@ export default new Vuex.Store({
                 method: "PUT",
             };
             fetch(AppConst.API_URL + "stores/" + data.id_store, myInit)
+                .then(result => result.json())
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        updateSupplier(context, data) {
+            console.log(data.supplierForm)
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                },
+                body: JSON.stringify(data.supplierForm),
+                method: "PUT",
+            };
+            fetch(AppConst.API_URL + "suppliers/" + data.id_supplier, myInit)
                 .then(result => result.json())
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);

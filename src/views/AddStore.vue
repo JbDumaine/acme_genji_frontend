@@ -90,6 +90,7 @@ export default Vue.extend({
     },
     addStore: async function () {
       if(this.id_store != null){
+        this.storeForm.city_id = this.city_chose.id;
         await this.$store.dispatch("updateStore", this.$data);
         this.$store.commit('setActiveMenu', 'stores')
         this.$store.dispatch('getStores');
