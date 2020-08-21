@@ -26,8 +26,6 @@
   </div>
 </template>
 
-
-
 <script>
 import Vue from "vue";
 import Multiselect from "vue-multiselect";
@@ -45,12 +43,23 @@ export default Vue.extend({
       store: [],
       queryData: null,
       city_chose: null,
+      id_store : null,
       storeForm: {
         name: null,
         address: null,
         city_id: null,
       },
     };
+  },
+  created:function(){
+    if (this.$store.state.store != null){
+      this.id_store = this.$store.state.store.id
+      this.storeForm.name = this.$store.state.store.name
+      this.storeForm.address = this.$store.state.store.address
+      this.storeForm.city_id = this.$store.state.store.city_id
+      this.city_chose = this.$store.state.store.city
+    }
+    
   },
   methods: {
     getData(query) {
@@ -79,10 +88,18 @@ export default Vue.extend({
           });
       }
     },
-    addStore: function () {
-      console.log("coucou");
-      this.storeForm.city_id = this.city_chose.id;
-      this.$store.dispatch("addStore", this.storeForm);
+    addStore: async function () {
+      if(this.id_store != null){
+        await this.$store.dispatch("updateStore", this.$data);
+        this.$store.commit('setActiveMenu', 'stores')
+        this.$store.dispatch('getStores');
+        this.$router.push('/menu');
+      }
+      else
+      {
+        this.storeForm.city_id = this.city_chose.id;
+        this.$store.dispatch("addStore", this.storeForm);
+      }
     },
   },
 });
