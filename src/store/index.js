@@ -394,6 +394,28 @@ export default new Vuex.Store({
                 });
         },
 
+        updateProducts(context, data) {
+            console.log(data.product)
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                },
+                body: JSON.stringify(data.product),
+                method: "PUT",
+            };
+            fetch(AppConst.API_URL + "products/" + data.id, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setProduct', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+
+
         deleteCategory(context, categoryId) {
             let myInit = {
                 headers: {

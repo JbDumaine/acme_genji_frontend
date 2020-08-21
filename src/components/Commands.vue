@@ -1,5 +1,8 @@
 <template>
 <div id="commands">
+    <a @click="add()" class="d-flex justify-content-end m-3">
+        <font-awesome-icon icon="plus-circle"/>
+      </a>
     <div class="row align-items-center justify-content-between border-bottom mb-3">
         <div class="col-4"><b>Numéro</b></div>
         <div class="col-4"><b>Etat</b></div>
