@@ -21,14 +21,14 @@ const routes = [
     },
     {
         path:   '/customer-home',
-        name: 'Customer',
-        component: () => import('../views/Customer.vue'),
+        name: 'HomeCustomer',
+        component: () => import('../views/HomeCustomer.vue'),
     },
 
     {
-        path:   '/basket',
-        name: 'Panier',
-        component: () => import('../views/Basket.vue'),
+        path:   '/cart',
+        name: 'Cart',
+        component: () => import('../views/Cart.vue'),
     },
 
     {
@@ -100,6 +100,12 @@ const routes = [
         path:   '/detail-supplier/',
         name: 'DetailSupplier',
         component: () => import('../views/DetailSupplier.vue'),
+    },
+
+    {
+        path:   '/detail-store/',
+        name: 'DetailStore',
+        component: () => import('../views/DetailStore.vue'),
     }
 ];
 
