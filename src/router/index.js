@@ -94,6 +94,12 @@ const routes = [
         path:   '/detail-command/:commandId',
         name: 'DetailCommand',
         component: () => import('../views/DetailCommand.vue'),
+    },
+
+    {
+        path:   '/detail-supplier/',
+        name: 'DetailSupplier',
+        component: () => import('../views/DetailSupplier.vue'),
     }
 ];
 
