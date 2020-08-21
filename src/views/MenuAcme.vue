@@ -6,12 +6,8 @@
                 <font-awesome-icon icon="home" />
             </template>
         </b-tab>
-        <b-tab title="Général" :active="activeTab == '' || activeTab == 'general'">
-            <General />
-        </b-tab>
         <b-tab title="Produits" :active="activeTab == 'products'">
             <Products />
-
         </b-tab>
         <b-tab title="Commandes" :active="activeTab == 'commands'">
             <Commands />
@@ -31,6 +27,9 @@
         <b-tab v-if="this.$store.state.user.role_id == 1" title="Utilisateurs" :active="activeTab == 'users'">
             <Users />
         </b-tab>
+        <b-tab title="Flux" :active="activeTab == '' || activeTab == 'flux'">
+            <Flux />
+        </b-tab>
     </b-tabs>
 </div>
 </template>
@@ -38,7 +37,7 @@
 <script>
 import Categories from '../components/Categories.vue';
 import Commands from '../components/Commands.vue';
-import General from '../components/General.vue';
+import Flux from '../components/Flux.vue';
 import Receptions from '../components/Receptions.vue';
 import Products from '../components/Products.vue';
 import Suppliers from '../components/Suppliers.vue';
@@ -51,7 +50,7 @@ export default {
     components: {
         Categories,
         Commands,
-        General,
+        Flux,
         Receptions,
         Products,
         Suppliers,
