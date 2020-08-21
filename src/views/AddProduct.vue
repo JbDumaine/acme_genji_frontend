@@ -101,7 +101,7 @@ export default Vue.extend({
     addProduct: async function () {
       if (this.id != null)
       {
-        await this.$store.dispatch("updateProducts", this.$data);
+        await this.$store.dispatch("updateProduct", this.$data);
         this.$store.commit('setActiveMenu', 'products')
         this.$store.dispatch('getProductsByCategories');
         this.$router.push('/menu');

@@ -18,9 +18,6 @@
         <a @click="edit(category)">
           <font-awesome-icon icon="edit" />
         </a>
-        <a @click="remove(category)">
-          <font-awesome-icon icon="trash" />
-        </a>
       </div>
     </div>
   </div>
@@ -36,12 +33,6 @@ export default {
     edit: function (category) {
       this.$store.commit("setCategory", category);
       this.$router.push("/add-category");
-    },
-    remove: async function (category) {
-      if (confirm(`Etes vous sur de vouloir supprimer ${category.name} ?`)) {
-        await this.$store.dispatch("deleteCategory", category.id);
-        this.$store.dispatch("getCategories");
-      }
     },
     add: function () {
       this.$store.commit("setCategory", null);

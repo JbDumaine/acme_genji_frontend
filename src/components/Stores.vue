@@ -25,9 +25,6 @@
         <a @click="edit(store)">
           <font-awesome-icon icon="edit" />
         </a>
-        <a @click="remove(store)">
-          <font-awesome-icon icon="trash" />
-        </a>
       </div>
     </div>
   </div>
@@ -47,13 +44,6 @@ export default {
     edit: function (store) {
         this.$store.commit("setStore", store);
         this.$router.push("/add-store");
-    },
-
-    remove: async function (store) {
-        if (confirm(`Etes vous sur de vouloir supprimer ${store.name} ?`)) {
-        await this.$store.dispatch("deleteStore", store.id);
-        this.$store.dispatch("getStores");
-      }
     },
 
     add: function () {

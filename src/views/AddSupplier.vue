@@ -45,6 +45,7 @@ export default Vue.extend({
       supplier: [],
       queryData: null,
       city_chose: null,
+      id_supplier: null,
       supplierForm: {
         name: null,
         address: null,
@@ -52,6 +53,16 @@ export default Vue.extend({
       },
     };
   },
+  created:function(){
+    if(this.$store.state.supplier != null){
+      this.id_supplier = this.$store.state.supplier.id
+      this.supplierForm.name = this.$store.state.supplier.name
+      this.supplierForm.address = this.$store.state.supplier.address
+      this.supplierForm.city_id = this.$store.state.supplier.city_id
+      this.city_chose = this.$store.state.supplier.city
+    }
+  },
+
   methods: {
     getData(query) {
       this.isLoading = true;
@@ -69,7 +80,6 @@ export default Vue.extend({
             json.forEach((element) => {
               result.push(element);
             });
-            console.log(result);
             this.supplier = result;
             this.isLoading = false;
           })
@@ -79,9 +89,19 @@ export default Vue.extend({
           });
       }
     },
-    addSupplier: function () {
+    addSupplier: async function () {
+      if(this.id_supplier != null){
+        this.supplierForm.city_id = this.city_chose.id;
+        await this.$store.dispatch("updateSupplier", this.$data);
+        this.$store.commit('setActiveMenu', 'suppliers')
+        this.$store.dispatch('getSuppliers');
+        this.$router.push('/menu');
+      }
+      else
+      {
       this.supplierForm.city_id = this.city_chose.id;
       this.$store.dispatch("addSupplier", this.supplierForm);
+      }
     },
   },
 });
