@@ -35,7 +35,7 @@ export default new Vuex.Store({
         product: null,
         store: null,
         category: null,
-        reception: null
+        reception: null,
     },
     mutations: {
         
@@ -113,33 +113,29 @@ export default new Vuex.Store({
     },
 
     actions: {
-        async authenticate(context, {
-            email,
-            password
-        }) {
+        async authenticate(context, { email, password }) {
             let myInit = {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     email: email,
-                    password: password
-                })
+                    password: password,
+                }),
             };
             await fetch(AppConst.API_URL + AppConst.API_URI_LOGIN, myInit)
-                .then(result => result.json())
+                .then((result) => result.json())
                 .then((json) => {
-
-                    if (json.message === 'Invalid Credentials') {
-                        return context.commit('setInvalidCredential', true)
+                    if (json.message === "Invalid Credentials") {
+                        return context.commit("setInvalidCredential", true);
                     }
 
-                    context.commit('setUser', json.user);
-                    context.commit('setRequestToken', json.access_token);
-                    localStorage.setItem('access_token', json.access_token);
-                    localStorage.setItem('user', JSON.stringify(json.user));
-                    context.commit('setUserLogged', true);
+                    context.commit("setUser", json.user);
+                    context.commit("setRequestToken", json.access_token);
+                    localStorage.setItem("access_token", json.access_token);
+                    localStorage.setItem("user", JSON.stringify(json.user));
+                    context.commit("setUserLogged", true);
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite sur le authenticate.`);
@@ -221,13 +217,13 @@ export default new Vuex.Store({
             let myInit = {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${context.state.requestToken}`,
-                }
+                    Authorization: `Bearer ${context.state.requestToken}`,
+                },
             };
             fetch(AppConst.API_URL + "products/" + productId, myInit)
-                .then(result => result.json())
+                .then((result) => result.json())
                 .then((json) => {
-                    context.commit('setProduct', json)
+                    context.commit("setProduct", json);
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);
@@ -402,6 +398,26 @@ export default new Vuex.Store({
                 }),
             };
             fetch(AppConst.API_URL + "categories", myInit)
+                .then((result) => result.json())
+                .then((json) => {
+                    console.log(json);
+                    router.push("Menu");
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        addProduct(context, data) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${context.state.requestToken}`,
+                },
+                method: "POST",
+                body: JSON.stringify(data),
+            };
+            fetch(AppConst.API_URL + "products", myInit)
                 .then((result) => result.json())
                 .then((json) => {
                     console.log(json);
