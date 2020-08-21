@@ -567,6 +567,28 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
+        addStockReception(context, data) {
+            delete data.products.name;
+            console.log(data.products)
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${context.state.requestToken}`,
+                },
+                method: "POST",
+                body: JSON.stringify(data),
+            };
+            fetch(AppConst.API_URL + "stock_receptions", myInit)
+                .then((result) => result.json())
+                .then((json) => {
+                    console.log(json);
+                    router.push("Menu");
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
     },
 });
 
