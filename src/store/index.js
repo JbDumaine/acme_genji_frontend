@@ -371,6 +371,48 @@ export default new Vuex.Store({
                 });
         },
 
+        updateCategory(context, data) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                },
+                body: JSON.stringify({
+                    name: data.form.name,
+                    description: data.form.description,
+                }),
+                method: "PUT",
+            };
+            fetch(AppConst.API_URL + "categories/" + data.id, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setCategory', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+
+        deleteCategory(context, categoryId) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                },
+                method: "DELETE",
+            };
+            fetch(AppConst.API_URL + "categories/" + categoryId, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                   console.log('oui !' + json);
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+
         getHomeData(context) {
             let myInit = {
                 headers: {
