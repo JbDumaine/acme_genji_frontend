@@ -491,6 +491,26 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
+        addSupplier(context, data) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${context.state.requestToken}`,
+                },
+                method: "POST",
+                body: JSON.stringify(data),
+            };
+            fetch(AppConst.API_URL + "suppliers", myInit)
+                .then((result) => result.json())
+                .then((json) => {
+                    console.log(json);
+                    router.push("Menu");
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
     },
 });
 
