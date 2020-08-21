@@ -29,6 +29,7 @@ export default new Vuex.Store({
         categories: null,
         receptions: null,
         homeData: null,
+        fluxHistory: null,
 
         command: null,
         supplier: null,
@@ -91,6 +92,10 @@ export default new Vuex.Store({
         },
         setCategory(state, term) {
             state.category = term;
+        },
+
+        setFluxHistory(state, term) {
+            state.fluxHistory = term;
         },
 
         setStores(state, term) {
@@ -364,6 +369,23 @@ export default new Vuex.Store({
                 .then(result => result.json())
                 .then((json) => {
                     context.commit('setCategory', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        getFluxHistory(context) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${context.state.requestToken}`,
+                },
+            };
+            fetch(AppConst.API_URL + "historics_flux", myInit)
+                .then((result) => result.json())
+                .then((json) => {
+                    context.commit("setFluxHistory", json);
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);

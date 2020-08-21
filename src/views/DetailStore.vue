@@ -5,7 +5,7 @@
             <span>{{this.$store.state.store.address}} {{this.$store.state.store.city.name}}</span>
         </div>
         <div class="detail-store-table">
-            <h4>Tableau des produits</h4>
+            <h4>Détails des commandes</h4>
             <table>
                 <thead>
                     <th colspan="2">Réception de stock</th>
