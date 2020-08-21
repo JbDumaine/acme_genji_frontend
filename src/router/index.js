@@ -83,10 +83,17 @@ const routes = [
         name: 'addCategory',
         component: () => import('../views/AddCategory.vue'),
     },
+    
     {
         path:   '/update-stock-reception',
         name: 'UpdateStockReception',
         component: () => import('../views/UpdateStockReception.vue'),
+    },
+
+    {
+        path:   '/detail-command',
+        name: 'DetailCommand',
+        component: () => import('../views/DetailCommand.vue'),
     }
 ];
 
