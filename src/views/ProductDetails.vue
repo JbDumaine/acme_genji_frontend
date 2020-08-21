@@ -7,8 +7,8 @@
         <h1>DETAILS PRODUIT:</h1>
         <h3>{{this.$store.state.product.name}}</h3>
         <div class="details_category_supplier">
-            <h5>{{this.$store.state.product.category_id}}</h5>
-            <h5>{{this.$store.state.product.supplier_id}}</h5>
+            <h5>{{this.$store.state.product.category.name}}</h5>
+            <h5>{{this.$store.state.product.supplier.name}}</h5>
         </div>
         <div class="details_content_wrapper">
             <div class="small_img_container">

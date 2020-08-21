@@ -30,7 +30,7 @@ export default {
     },
     methods : {
         receptionPage: function(id) {
-            this.$router.push(`/reception/${id}`);
+            this.$router.push(`/stock-reception/${id}`);
         },
         supplierPage: function(id) {
             this.$router.push(`/supplier/${id}`);

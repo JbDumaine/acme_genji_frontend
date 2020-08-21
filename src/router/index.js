@@ -42,6 +42,11 @@ const routes = [
         name: 'StockReception',
         component: () => import('../views/StockReception.vue'),
     },
+    {
+        path:   '/stock-reception/:receptionId',
+        name: 'StockReceptionDetails',
+        component: () => import('../views/DetailStockReception.vue'),
+    },
 
     {
         path:   '/add-product',
@@ -78,10 +83,17 @@ const routes = [
         name: 'addCategory',
         component: () => import('../views/AddCategory.vue'),
     },
+    
     {
         path:   '/update-stock-reception',
         name: 'UpdateStockReception',
         component: () => import('../views/UpdateStockReception.vue'),
+    },
+
+    {
+        path:   '/detail-command',
+        name: 'DetailCommand',
+        component: () => import('../views/DetailCommand.vue'),
     }
 ];
 
