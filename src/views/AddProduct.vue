@@ -72,7 +72,7 @@ export default Vue.extend({
     return {
       categories: this.$store.state.categories,
       suppliers: this.$store.state.suppliers,
-      id : null,
+      product_id : null,
       product: {
           name: null,
           description: null,
@@ -87,7 +87,7 @@ export default Vue.extend({
   },
   created(){
     if(this.$store.state.product != null){
-      this.id = this.$store.state.product.id;
+      this.id = this.$store.state.product.product_id;
       this.product.name = this.$store.state.product.name;
       this.product.description = this.$store.state.product.description;
       this.product.supplier_id = this.$store.state.product.supplier_id;

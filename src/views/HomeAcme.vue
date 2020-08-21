@@ -92,13 +92,29 @@
                     </div>
                 </div>
             </b-card>
+            <b-card class="col-4 px-0" v-if="this.$store.state.user.role_id == 1" header="Magasins" header-tag="header" title="Magasins" @click="redirectToMenu('stores')">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <ul class="pl-1">
+                            <li class="mb-2">{{this.$store.state.homeData.stores[0].name}}</li>
+
+                            <li>{{this.$store.state.homeData.stores[1].name}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        <h5 class="text-center">Total</h5>
+                        <h2>{{this.$store.state.homeData.nbStores}}</h2>
+                    </div>
+                </div>
+            </b-card>
         </b-card-group>
     </div>
 </div>
 </template>
 
 <style scoped>
-.card-deck .card {
+
+.card-deck .card{
     flex: 30%;
     cursor: pointer;
 }
