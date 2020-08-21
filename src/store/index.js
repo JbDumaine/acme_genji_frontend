@@ -38,7 +38,7 @@ export default new Vuex.Store({
         reception: null,
     },
     mutations: {
-        
+
         setActiveMenu(state, id) {
             state.activeMenu = id;
         },
@@ -382,7 +382,7 @@ export default new Vuex.Store({
                 .then(result => result.json())
                 .then((json) => {
                     context.commit('setHomeData', json)
-            });
+                });
         },
 
         addCategory(context, data) {

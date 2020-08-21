@@ -41,7 +41,6 @@ export default Vue.extend({
     },
     created: function() {
         this.$store.dispatch(`getReception`,this.$route.params.receptionId);
-        console.log(this.$store.state);
     }
 })
 </script>

@@ -30,7 +30,7 @@ export default {
     },
     methods : {
         commandPage: function(id) {
-            this.$router.push(`/command/${id}`);
+            this.$router.push(`/detail-command/${id}`);
         }
     }
 }
