@@ -32,7 +32,7 @@ const routes = [
     },
 
     {
-        path:   '/product-details',
+        path:   '/product-details/:productId',
         name: 'ProductDetails',
         component: () => import('../views/ProductDetails.vue'),
     },
@@ -77,6 +77,11 @@ const routes = [
         path:   '/add-category',
         name: 'addCategory',
         component: () => import('../views/AddCategory.vue'),
+    },
+    {
+        path:   '/update-stock-reception',
+        name: 'UpdateStockReception',
+        component: () => import('../views/UpdateStockReception.vue'),
     }
 ];
 

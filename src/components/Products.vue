@@ -57,7 +57,7 @@ export default {
     },
     methods : {
         productPage: function (id) {
-            this.$router.push(`/product/${id}`);
+            this.$router.push(`/product-details/${id}`);
         },
         changeSelector: function() {
             this.$store.state.products = null;

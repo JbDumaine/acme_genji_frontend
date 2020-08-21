@@ -1,10 +1,14 @@
 <template>
-    <div class="product_details_container">
+    <div v-if="this.$store.state.product" class="product_details_container">
+        <div class="d-flex justify-content-center mb-3">
+            <b-spinner v-if="!this.$store.state.product" class="d-flex justify-content-center mb-3 largeProgress"></b-spinner>
+        </div>
+
         <h1>DETAILS PRODUIT:</h1>
-        <h3>Nom du produit</h3>
+        <h3>{{this.$store.state.product.name}}</h3>
         <div class="details_category_supplier">
-            <h5>Catégorie</h5>
-            <h5>Fournisseur</h5>
+            <h5>{{this.$store.state.product.category_id}}</h5>
+            <h5>{{this.$store.state.product.supplier_id}}</h5>
         </div>
         <div class="details_content_wrapper">
             <div class="small_img_container">
@@ -19,15 +23,14 @@
             </div>
             <div class="details_product_content_container">
                 <div class="details_price_weight_container">
-                    <h4>Prix du produit</h4>
-                    <h5>Poids du produit</h5>
+                    <h4>{{this.$store.state.product.unit_price}}</h4>
+                    <h5>{{this.$store.state.product.unit_weight}}</h5>
                 </div>
                 <h3>Description du produit</h3>
-                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it
-                    to make a type specimen book. It has survived not only five centuries</span>
-                    <h5 class="detail_product_quantity">Quantité de produit</h5>
+                <span>
+                    {{this.$store.state.product.description}}
+                </span>
+                <h5 class="detail_product_quantity">Quantité de produit : {{this.$store.state.product.quantity}}</h5>
             </div>
         </div>
     </div>
@@ -37,7 +40,15 @@
 <script>
 import Vue from 'vue'
 export default Vue.extend({
-    name:'ProductDetails'
+    name:'ProductDetails',
+    data: function() {
+        return {
+            product: this.$store.state
+        }
+    },
+    created: function() {
+        this.$store.dispatch(`getProduct`,this.$route.params.productId);
+    }
 })
 </script>
 

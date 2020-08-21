@@ -28,6 +28,13 @@ export default new Vuex.Store({
     stores: null,
     categories: null,
     receptions: null,
+
+    command: null,
+    supplier: null,
+    product: null,
+    store: null,
+    category: null,
+    reception: null
   },
   mutations: {
     setActiveMenu(state, id) {
@@ -60,7 +67,7 @@ export default new Vuex.Store({
       state.products = term;
     },
     setProductsBySuppliers(state, term) {
-      state.products = term;
+      state.products = term;   
     },
     setSuppliers(state, term) {
       state.suppliers = term;
@@ -97,7 +104,6 @@ export default new Vuex.Store({
           if (json.message === "Invalid Credentials") {
             return context.commit("setInvalidCredential", true);
           }
-
           context.commit("setUser", json.user);
           context.commit("setRequestToken", json.access_token);
           localStorage.setItem("access_token", json.access_token);
@@ -109,6 +115,87 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
+        // Getter/Setter pour les différentes vues
+        setCommands(state, term){
+            state.commands = term;
+        },
+        setCommand(state, term){
+            state.command = term;
+        },
+
+        setProductsByCategories(state, term) {
+            state.products = term;
+        },
+        setProductsBySuppliers(state, term) {
+            state.products = term;
+        },
+        setProduct(state, term) {
+            state.product = term;
+        },
+
+        setSuppliers(state, term) {
+            state.suppliers = term;
+        },
+        setSupplier(state, term) {
+            state.supplier = term;
+        },
+
+        setCategories(state, term) {
+            state.categories = term;
+        },
+        setCategory(state, term) {
+            state.category = term;
+        },
+
+        setStores(state, term) {
+            state.stores = term;
+        },
+        setStore(state, term) {
+            state.store = term;
+        }, 
+
+        setReceptions(state, term) {
+            state.receptions = term;
+        },
+        setReception(state, term) {
+            state.reception = term;
+        }
+    },
+
+    actions: {
+
+        async authenticate(context, {
+            email,
+            password
+        }) {
+            let myInit = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            };
+            await fetch(AppConst.API_URL + AppConst.API_URI_LOGIN, myInit)
+                .then(result => result.json())
+                .then((json) => {
+
+                    if (json.message === 'Invalid Credentials') {
+                        return context.commit('setInvalidCredential', true)
+                    }
+
+                    context.commit('setUser', json.user);
+                    context.commit('setRequestToken', json.access_token);
+                    localStorage.setItem('access_token', json.access_token);
+                    localStorage.setItem('user', JSON.stringify(json.user));
+                    context.commit('setUserLogged', true);
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite sur le authenticate.`);
+                    console.log(error);
+                });
 
     getCommands(context) {
       let myInit = {
@@ -145,6 +232,26 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
+        getCommand(context, commandId) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                },
+                body: JSON.stringify({
+                    commandId: commandId
+                })
+            };
+            fetch(AppConst.API_URL + "command/" + commandId, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setCommand', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
 
     getProductsBySuppliers(context) {
       let myInit = {
@@ -181,6 +288,40 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
+        getProductsBySuppliers(context) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                },
+            };
+            fetch(AppConst.API_URL + "products/group/supplier", myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setProductsBySuppliers', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        getProduct(context, productId) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                }
+            };
+            fetch(AppConst.API_URL + "products/" + productId, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setProduct', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
 
     getSuppliers(context) {
       let myInit = {

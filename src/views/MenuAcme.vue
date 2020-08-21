@@ -3,7 +3,7 @@
     <b-tabs content-class="mt-3" fill>
         <b-tab class="container" @click="redirectToHome()">
             <template v-slot:title>
-                <img src="../assets/home.png" />
+                <font-awesome-icon icon="home" />
             </template>
         </b-tab>
         <b-tab title="Général" :active="activeTab == '' || activeTab == 'general'">
@@ -18,13 +18,16 @@
         <b-tab title="Réceptions" :active="activeTab == 'receptions'">
             <Receptions />
         </b-tab>
-        <b-tab title="Fournisseurs" :active="activeTab == 'suppliers'">
+        <b-tab v-if="this.$store.state.user.role_id == 1" title="Fournisseurs" :active="activeTab == 'suppliers'">
             <Suppliers />
         </b-tab>
-        <b-tab title="Catégories" :active="activeTab == 'categories'">
+        <b-tab v-if="this.$store.state.user.role_id == 1" title="Magasins" :active="activeTab == 'stores'">
+            <Stores />
+        </b-tab>
+        <b-tab v-if="this.$store.state.user.role_id == 1" title="Catégories" :active="activeTab == 'categories'">
             <Categories />
         </b-tab>
-        <b-tab title="Utilisateurs" :active="activeTab == 'users'">
+        <b-tab v-if="this.$store.state.user.role_id == 1" title="Utilisateurs" :active="activeTab == 'users'">
             <Users />
         </b-tab>
     </b-tabs>
@@ -78,8 +81,9 @@ export default {
 
 <style scoped>
 
-img {
+.fa-home {
     width: 30px;
     height: 30px;
+    color: black;
 }
 </style>
