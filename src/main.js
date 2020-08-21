@@ -5,10 +5,10 @@ import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import Vuex from 'vuex'
 import VueCarousel from 'vue-carousel'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlusCircle, faHome, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle, faHome, faShoppingCart, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faPlusCircle, faHome, faShoppingCart);
+library.add(faPlusCircle, faHome, faShoppingCart, faEdit, faTrash);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

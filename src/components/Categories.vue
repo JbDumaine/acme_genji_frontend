@@ -2,17 +2,20 @@
 <div id="categories">
     <div class="row align-items-center justify-content-between border-bottom mb-2">
         <div class="col-4 p-0"><b>Nom</b></div>
-        <div class="col-8"><b>Description</b></div>
+        <div class="col-6"><b>Description</b></div>
     </div>
 
-    <div v-for="category in this.$store.state.categories" :key="category.id">
+    <div v-for="category in this.$store.state.categories" :key="category.id" >
         <div class="row align-items-center justify-content-between mb-3 border-bottom">
             <div class="col-4">
                 {{category.name}}
             </div>
-            <div class="col-8">
+            <div class="col-6">
                 {{category.description}}
             </div>
+            <a @click="edit(category)"><font-awesome-icon icon="edit" /></a>
+            <a @click="remove(category)"><font-awesome-icon icon="trash" /></a>
+            
         </div>
     </div>
 </div>
@@ -25,6 +28,18 @@ export default {
     created: function () {
         this.$store.dispatch('getCategories');
     },
+    methods : {
+        edit: function(category){
+            this.$store.commit('setCategory', category)
+            this.$router.push('/add-category');
+        },
+        remove: async function(category){
+            if(confirm(`Etes vous sur de vouloir supprimer ${category.name} ?`)){
+                await this.$store.dispatch('deleteCategory', category.id);
+                this.$store.dispatch('getCategories');
+            }
+        },
+    }
 }
 </script>
 
@@ -32,5 +47,8 @@ export default {
 img{
     width : 90px;
     height : 90px
+}
+.fa-edit, .fa-trash {
+    cursor : pointer;
 }
 </style>

@@ -22,8 +22,8 @@
         <h2>{{ item.name }}</h2>
         <div class="row align-items-center justify-content-between border-bottom mb-2">
             <div class="col-4"><b>Nom</b></div>
-            <div class="col-4 p-0"><b>Prix</b></div>
-            <div class="col-4"><b>Quantité</b></div>
+            <div class="col-3 p-0"><b>Prix</b></div>
+            <div class="col-3"><b>Quantité</b></div>
         </div>
         <div v-for="product in item.products" :key="product.id">
             <div class="product row align-items-center justify-content-between mb-3 border-bottom" @click="productPage(2)">
@@ -31,12 +31,13 @@
                     <img src="../assets/image_not_found.png" class="mr-2" />
                     <h5>{{ product.name }}</h5>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     {{ product.unit_price }}€
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     {{ product.stock_quantity }} pcs
                 </div>
+                <font-awesome-icon icon="edit" @onclick="edit(category.id)"/>
             </div>
         </div>
     </div>

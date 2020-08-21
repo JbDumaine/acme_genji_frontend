@@ -11,6 +11,7 @@
         </b-tab>
         <b-tab title="Produits" :active="activeTab == 'products'">
             <Products />
+
         </b-tab>
         <b-tab title="Commandes" :active="activeTab == 'commands'">
             <Commands />
@@ -47,10 +48,6 @@ import Stores from '../components/Stores.vue';
 export default {
 
     name: 'Menu',
-    states: {
-
-    },
-
     components: {
         Categories,
         Commands,
