@@ -52,7 +52,7 @@ export default new Vuex.Store({
         },
         setUserLogged(state, term) {
             state.userLogged = term;
-        }
+        },
 
         // Getter/Setter pour les différentes vues
         setCommands(state, term){
