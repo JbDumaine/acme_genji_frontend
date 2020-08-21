@@ -97,7 +97,7 @@ const routes = [
     },
 
     {
-        path:   '/detail-supplier/',
+        path:   '/detail-supplier/:supplierId',
         name: 'DetailSupplier',
         component: () => import('../views/DetailSupplier.vue'),
     },

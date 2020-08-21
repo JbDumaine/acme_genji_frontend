@@ -1,7 +1,7 @@
 <template>
 <header class="d-flex flex-raw justify-content-between align-items-center px-4 border-bottom">
     <div>
-        <img src="../assets/logo.png" class="m-3" />
+        <img src="../assets/acme.png" class="m-3 home-button" @click="backToHome"/>
     </div>
     <div class="row align-items-center">
 
@@ -41,6 +41,9 @@ export default {
         },
         goBasket: function(){
             this.$router.push("/basket");
+        },
+        backToHome: function() {
+            this.$router.push("/");
         }
     }
 }
@@ -63,6 +66,10 @@ header {
 }
 .fa-shopping-cart :hover {
     color: white;
+}
+
+.home-button {
+    cursor: pointer;
 }
 
 a {
