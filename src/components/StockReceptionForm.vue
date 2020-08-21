@@ -1,15 +1,6 @@
 <template>
     <form action="">
         <div class="form-group-container">
-            <h2>Nom du fournisseur</h2>
-            <div class="form-group">
-                <label for="form-reception-number">Numéro de réception : </label>
-                <input type="text" name="form-reception-number" id="form-reception-number">
-            </div>
-             <div class="form-group">
-                <label for="form-product-date-reception">Date de réception : </label>
-                <input type="date" name="form-product-date-reception" id="form-product-date-reception">
-            </div>
             <div class="form-group">
                 <label for="form-product-name">Nom du produit : </label>
                 <select name="form-product-name" id="form-product-name">
