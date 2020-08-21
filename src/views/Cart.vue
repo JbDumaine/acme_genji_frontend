@@ -8,7 +8,7 @@
             <div class="product_intel">
                 <h2>Nom Produit</h2>
                 <div class="btn_quantity_trash">
-                    <select name="product_quantity" id="select_product_quantity">
+                    <select name="product_quantity" class="select_product_quantity">
                         <option value="">Quantité</option>
                         <option value="">1</option>
                         <option value="">2</option>
@@ -32,7 +32,7 @@
             <div class="product_intel">
                 <h2>Nom Produit</h2>
                 <div class="btn_quantity_trash">
-                    <select name="product_quantity" id="select_product_quantity">
+                    <select name="product_quantity" class="select_product_quantity">
                         <option value="">Quantité</option>
                         <option value="">1</option>
                         <option value="">2</option>
@@ -56,7 +56,7 @@
             <div class="product_intel">
                 <h2>Nom Produit</h2>
                 <div class="btn_quantity_trash">
-                    <select name="product_quantity" id="select_product_quantity">
+                    <select name="product_quantity" class="select_product_quantity">
                         <option value="">Quantité</option>
                         <option value="">1</option>
                         <option value="">2</option>
@@ -80,7 +80,7 @@
             <div class="product_intel">
                 <h2>Nom Produit</h2>
                 <div class="btn_quantity_trash">
-                    <select name="product_quantity" id="select_product_quantity">
+                    <select name="product_quantity" class="select_product_quantity">
                         <option value="">Quantité</option>
                         <option value="">1</option>
                         <option value="">2</option>
@@ -104,7 +104,7 @@
 <script>
 import Vue from 'vue'
 export default Vue.extend({
-    name: 'Basket'
+    name: 'Cart'
 })
 </script>
 

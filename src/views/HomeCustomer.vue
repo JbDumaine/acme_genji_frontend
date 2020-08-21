@@ -71,7 +71,7 @@ import Vue from 'vue'
 //import HeaderCustomer from './components/HeaderCustomer.vue'
 
 export default Vue.extend({
-    name:"Customer",
+    name:"HomeCustomer",
     methods: {
         ProductDetails: function(){
             this.$router.push("/product-details");
