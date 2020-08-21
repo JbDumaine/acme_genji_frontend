@@ -20,6 +20,8 @@ export default new Vuex.Store({
         //Bool
         invalidCredential: false,
 
+        userLogged: false,
+      
         //Data :
         commands: null,
         suppliers: null,
@@ -28,7 +30,6 @@ export default new Vuex.Store({
         categories: null,
         receptions: null,
     },
-
     mutations: {
 
         setActiveMenu(state, id) {
@@ -48,6 +49,9 @@ export default new Vuex.Store({
         },
         setUser(state, term) {
             state.user = term;
+        },
+        setUserLogged(state, term) {
+            state.userLogged = term;
         },
 
         // Getter/Setter pour les différentes vues
@@ -76,7 +80,7 @@ export default new Vuex.Store({
 
     actions: {
 
-        authenticate(context, {
+        async authenticate(context, {
             email,
             password
         }) {
@@ -90,14 +94,19 @@ export default new Vuex.Store({
                     password: password
                 })
             };
-            fetch(AppConst.API_URL + AppConst.API_URI_LOGIN, myInit)
+            await fetch(AppConst.API_URL + AppConst.API_URI_LOGIN, myInit)
                 .then(result => result.json())
                 .then((json) => {
+
                     if (json.message === 'Invalid Credentials') {
                         return context.commit('setInvalidCredential', true)
                     }
-                    context.commit('setUser', json.user)
-                    context.commit('setRequestToken', json.access_token)
+
+                    context.commit('setUser', json.user);
+                    context.commit('setRequestToken', json.access_token);
+                    localStorage.setItem('access_token', json.access_token);
+                    localStorage.setItem('user', JSON.stringify(json.user));
+                    context.commit('setUserLogged', true);
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite sur le authenticate.`);

@@ -5,8 +5,8 @@
     </div>
     <div class="card d-flex flex-column align-items-center p-2 m-2">
     <img src="../assets/user.png" class="mx-5"/>
-    <h4>Etienne Noroy</h4>
-    <h5>etienne.noroy@corpus-solutions.fr</h5>
+    <h4>{{this.$store.state.user.first_name}} {{this.$store.state.user.last_name}}</h4>
+    <h5>{{this.$store.state.user.email}}</h5>
     <button class="btn btn-primary px-5" @click="disconnect()">Se déconnecter</button>
     </div>
 </header>
@@ -15,9 +15,20 @@
 <script>
 export default {
     name: 'Header',
+    data: function(){
+        return{
+            user : null,
+        }
+    },
     methods : {
         disconnect: function(){
             this.$router.push("/login");
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('user');
+            this.$store.commit('setUserLogged', false);
+            this.$store.commit('setRequestToken', '');
+            this.$store.commit('setUser', null);
+
         }
     }
 }
