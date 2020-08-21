@@ -37,6 +37,7 @@ export default new Vuex.Store({
         reception: null
     },
     mutations: {
+        
         setActiveMenu(state, id) {
             state.activeMenu = id;
         },
@@ -60,30 +61,50 @@ export default new Vuex.Store({
         },
 
         // Getter/Setter pour les différentes vues
-        setCommands(state, term) {
+        setCommands(state, term){
             state.commands = term;
         },
+        setCommand(state, term){
+            state.command = term;
+        },
+
         setProductsByCategories(state, term) {
             state.products = term;
         },
         setProductsBySuppliers(state, term) {
             state.products = term;
         },
+        setProduct(state, term) {
+            state.product = term;
+        },
+
         setSuppliers(state, term) {
             state.suppliers = term;
         },
+        setSupplier(state, term) {
+            state.supplier = term;
+        },
+
         setCategories(state, term) {
             state.categories = term;
         },
-        setCategory(state, category) {
-            state.categories.push(category);
+        setCategory(state, term) {
+            state.category = term;
         },
+
         setStores(state, term) {
             state.stores = term;
         },
+        setStore(state, term) {
+            state.store = term;
+        }, 
+
         setReceptions(state, term) {
             state.receptions = term;
         },
+        setReception(state, term) {
+            state.reception = term;
+        }
     },
 
     actions: {
