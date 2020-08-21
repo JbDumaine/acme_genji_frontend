@@ -42,6 +42,8 @@ import Receptions from '../components/Receptions.vue';
 import Products from '../components/Products.vue';
 import Suppliers from '../components/Suppliers.vue';
 import Users from '../components/Users.vue';
+import Stores from '../components/Stores.vue';
+
 export default {
 
     name: 'Menu',
@@ -56,7 +58,8 @@ export default {
         Receptions,
         Products,
         Suppliers,
-        Users
+        Users,
+        Stores
     },
     methods: {
         redirectToHome: function () {
