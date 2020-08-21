@@ -4,7 +4,15 @@ import router from './router'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import Vuex from 'vuex'
 import VueCarousel from 'vue-carousel'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPlusCircle, faHome, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+library.add(faPlusCircle, faHome, faShoppingCart);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+Vue.config.productionTip = false
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import store from './store'
