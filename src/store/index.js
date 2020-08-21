@@ -21,7 +21,7 @@ export default new Vuex.Store({
         invalidCredential: false,
 
         userLogged: false,
-      
+
         //Data :
         commands: null,
         suppliers: null,
@@ -29,6 +29,7 @@ export default new Vuex.Store({
         stores: null,
         categories: null,
         receptions: null,
+        homeData: null,
 
         command: null,
         supplier: null,
@@ -62,10 +63,10 @@ export default new Vuex.Store({
         },
 
         // Getter/Setter pour les différentes vues
-        setCommands(state, term){
+        setCommands(state, term) {
             state.commands = term;
         },
-        setCommand(state, term){
+        setCommand(state, term) {
             state.command = term;
         },
 
@@ -98,13 +99,16 @@ export default new Vuex.Store({
         },
         setStore(state, term) {
             state.store = term;
-        }, 
+        },
 
         setReceptions(state, term) {
             state.receptions = term;
         },
         setReception(state, term) {
             state.reception = term;
+        },
+        setHomeData(state, term) {
+            state.homeData = term;
         }
     },
 
@@ -299,6 +303,23 @@ export default new Vuex.Store({
                 .then(result => result.json())
                 .then((json) => {
                     context.commit('setCategories', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        getHomeData(context) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                },
+            };
+            fetch(AppConst.API_URL + AppConst.API_URI_HOME, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setHomeData', json)
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);
