@@ -328,7 +328,7 @@ export default new Vuex.Store({
             fetch(AppConst.API_URL + "stores/" + storeId, myInit)
                 .then(result => result.json())
                 .then((json) => {
-                    context.commit('setProduct', json)
+                    context.commit('setStore', json)
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);

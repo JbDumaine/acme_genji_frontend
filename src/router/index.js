@@ -103,7 +103,7 @@ const routes = [
     },
 
     {
-        path:   '/detail-store/',
+        path:   '/detail-store/:storeId',
         name: 'DetailStore',
         component: () => import('../views/DetailStore.vue'),
     }

@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         storeDetails: function(id) {
-            this.$router.push(`/store/${id}`);
+            this.$router.push(`/detail-store/${id}`);
         }
     }
 }
