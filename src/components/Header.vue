@@ -1,7 +1,7 @@
 <template>
 <header class="d-flex flex-raw justify-content-between align-items-center px-4 border-bottom">
     <div>
-        <img src="../assets/acme.png" class="m-3 home-button" @click="backToHome"/>
+        <img src="../assets/acme.png" class="home-button" @click="backToHome"/>
     </div>
     <div class="row align-items-center">
 
@@ -70,6 +70,8 @@ header {
 
 .home-button {
     cursor: pointer;
+    width: 30%; 
+    height: 30%;
 }
 
 a {
