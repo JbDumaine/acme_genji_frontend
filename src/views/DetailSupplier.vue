@@ -1,45 +1,23 @@
 <template>
-    <div class="detail-supplier-container">
-        <h2>Nom du fournisseur</h2>
+    <div>
+        <h2  class="detail-supplier-title">{{this.$store.state.supplier.name}}</h2>
         <div class="detail-supplier-intel">
-            <h4>Adresse du fournisseur :</h4>
-            <span>65 rue des développeurs Web, </span>
-            <span>Ville</span>
+            <h4>Adresse du fournisseur : </h4>
+            <br>{{this.$store.state.supplier.address}}
+            <br>{{this.$store.state.supplier.city.name}}
         </div>
         <div class="detail-supplier-table">
             <h4>Tableau des réceptions de stock</h4>
             <table>
                 <thead>
-                    <th colspan="2">Réception de stock</th>
+                    <th colspan="2">Produits proposés</th>
                 </thead>
                 <tbody>
-                    <tr>
-                       <td class="solo-title" colspan="2">N° de réception: 9494NFKER</td>
-                    </tr>
-                    <tr>
-                        <td>Date de réception</td>
-                        <td>21/08/2020</td>
-                    </tr>
-                    <tr>
-                       <td class="solo-title" colspan="2">N° de réception: 9494NFKER</td>
-                    </tr>
-                    <tr>
-                        <td>Date de réception</td>
-                        <td>12/08/2020</td>
-                    </tr>
-                    <tr>
-                       <td class="solo-title" colspan="2">N° de réception: 9494NFKER</td>
-                    </tr>
-                    <tr>
-                        <td>Date de réception</td>
-                        <td>02/08/2020</td>
-                    </tr>
-                    <tr>
-                       <td class="solo-title" colspan="2">N° de réception: 9494NFKER</td>
-                    </tr>
-                    <tr>
-                        <td>Date de réception</td>
-                        <td>15/08/2020</td>
+                    <tr v-for="product in this.$store.state.supplier.products" :key="product.id">
+                        <td>{{product.name}}</td>
+                        <td>{{product.unit_weight}}</td>
+                        <td>{{product.unit_price}}</td>
+                        <td>{{product.description}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -52,19 +30,27 @@
 <script>
 import Vue from 'vue'
 export default Vue.extend({
-    name:'detail-supplier'
+    name:'detail-supplier',
+    created() {
+        this.$store.dispatch(`getSupplier`,this.$route.params.supplierId);
+        console.log(this.$store.state);
+    }
 })
 </script>
 
 <style scoped>
 
-    .detail-supplier-container{
+    .detail-supplier-title{
         margin-left: 40%;
     }
 
     .detail-supplier-intel{
         display: flex;
         align-items: center;
+    }
+
+    .detail-supplier-table{
+        align-items: start;
     }
 
     .detail-supplier-intel > h4{

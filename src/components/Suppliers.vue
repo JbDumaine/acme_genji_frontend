@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         supplierPage: function(id) {
-            this.$router.push(`/supplier/${id}`);
+            this.$router.push(`/detail-supplier/${id}`);
         }
     }
 }
