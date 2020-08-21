@@ -5,7 +5,7 @@
         <div class="col-8"><b>Description</b></div>
     </div>
 
-    <div v-for="category in categories" :key="category.id">
+    <div v-for="category in this.$store.state.categories" :key="category.id">
         <div class="row align-items-center justify-content-between mb-3 border-bottom">
             <div class="col-4">
                 {{category.name}}
@@ -22,14 +22,9 @@
 <script>
 export default {
     name: 'Categories',
-    data: function() {
-        return {
-            categories: [
-                {id:0, name:"Matériel scolaire", description:"Le matos pour les gamins à l'école"},
-                {id:1, name:"Bouffe", description:"Des trucs à manger, encore et encore..."}
-            ]
-        }
-    }
+    created: function () {
+        this.$store.dispatch('getCategories');
+    },
 }
 </script>
 

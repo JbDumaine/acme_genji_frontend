@@ -6,16 +6,16 @@
         <div class="col-4"><b>Store</b></div>
     </div>
 
-    <div v-for="command in commands" :key="command.id">
+    <div v-for="command in this.$store.state.commands" :key="command.id">
         <div class="command row align-items-center justify-content-between mb-3 border-bottom" @click="commandPage(command.id)">
             <div class="col-4">
-                {{command.commandNumber}}
+                {{command.command_number}}
             </div>
             <div class="col-4">
-                {{command.state}}
+                {{command.state.name}}
             </div>
             <div class="col-4">
-                {{command.store}}
+                {{command.store.name}}
             </div>
         </div>
     </div>
@@ -25,13 +25,8 @@
 <script>
 export default {
     name: 'Commands',
-    data: function() {
-        return {
-            commands: [
-                {id:0, commandNumber: "0001", state: "Prête", store: "Toulouse"},
-                {id:1, commandNumber: "0002", state: "Cloturée", store: "Marseille"}
-            ]
-        }
+    created: function () {
+        this.$store.dispatch('getCommands');
     },
     methods : {
         commandPage: function(id) {

@@ -3,9 +3,9 @@
     <div class="row justify-content-between mb-5">
         <div class="my-3">
             <label class="mr-2">Grouper par</label>
-            <select class="px-1" v-model="selected">
-                <option>Fournisseur</option>
+            <select class="px-1" v-model="selected" @change="changeSelector()">
                 <option>Catégorie</option>
+                <option>Fournisseur</option>
             </select>
         </div>
         <div class="m-3">
@@ -14,7 +14,11 @@
         </div>
     </div>
 
-    <div v-for="item in items" :key="item.id">
+    <div class="d-flex justify-content-center mb-3">
+        <b-spinner v-if="!this.$store.state.products" class="d-flex justify-content-center mb-3 largeProgress"></b-spinner>
+    </div>
+
+    <div v-for="item in this.$store.state.products" :key="item.id">
         <h2>{{ item.name }}</h2>
         <div class="row align-items-center justify-content-between border-bottom mb-2">
             <div class="col-4"><b>Nom</b></div>
@@ -28,10 +32,10 @@
                     <h5>{{ product.name }}</h5>
                 </div>
                 <div class="col-4">
-                    {{ product.price }}€
+                    {{ product.unit_price }}€
                 </div>
                 <div class="col-4">
-                    {{ product.quantity }} pcs
+                    {{ product.stock_quantity }} pcs
                 </div>
             </div>
         </div>
@@ -45,23 +49,24 @@ export default {
     name: 'Products',
     data: function() {
         return {
-            selected:'Fournisseur',
-            items: [
-                {id:1, name:"Darty", products: [
-                    {id:1, name:"Crayon à papier", price:"1", quantity:"10"},
-                    {id:2, name:"Stylo bleu", price:"2", quantity:"20"}
-                ]},
-                {id:2, name:"Super U", products: [
-                    {id:1, name:"Quatres-couleurs", price:"100", quantity:"1"},
-                    {id:2, name:"Compas", price:"50", quantity:"500"}
-                ]}
-            ],
+            selected:'Catégorie',
         }
+    },
+    created: function() {
+        this.$store.dispatch('getProductsByCategories');
     },
     methods : {
         productPage: function (id) {
             this.$router.push(`/product/${id}`);
         },
+        changeSelector: function() {
+            this.$store.state.products = null;
+            if (this.selected == "Fournisseur") {
+                this.$store.dispatch('getProductsBySuppliers');
+            } else {
+                this.$store.dispatch('getProductsByCategories');
+            }
+        }
     }    
 }
 </script>
@@ -73,5 +78,9 @@ img {
 }
 .product {
     cursor : pointer;
+}
+.largeProgress {
+    width: 3rem; 
+    height: 3rem;
 }
 </style>
