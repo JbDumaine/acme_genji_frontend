@@ -318,6 +318,8 @@ export default new Vuex.Store({
                 .then(result => result.json())
                 .then((json) => {
                     context.commit('setHomeData', json)
+            });
+        },
 
         addCategory(context, data) {
             let myInit = {
