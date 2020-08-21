@@ -91,7 +91,7 @@ const routes = [
     },
 
     {
-        path:   '/detail-command',
+        path:   '/detail-command/:commandId',
         name: 'DetailCommand',
         component: () => import('../views/DetailCommand.vue'),
     }
