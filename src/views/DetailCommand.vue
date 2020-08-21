@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div id="bouton" class="row justify-content-around mt-5">
-                <button class="btn btn-dark col-3">Fiche préparation</button>
+                <button class="btn btn-dark col-3" @click="test()">Fiche préparation</button>
                 <button class="btn btn-dark col-3">Bon de livraison</button>
                 <button class="btn btn-dark col-3">Générer facture</button>
             </div>
@@ -72,15 +72,16 @@ export default Vue.extend({
     },
     created() {
         this.$store.dispatch(`getCommand`,this.$route.params.commandId);
+    },
+    methods : {
+        test: function() {
+            this.$router.push(`/fiche-prepa-command`);
+        }
     }
 })
 </script>
 
 <style scoped>
-    table, th, tr, td, tbody{
-        border: 2px solid #000;
-    }
-
     .intel-group{
         display: flex;
     }
