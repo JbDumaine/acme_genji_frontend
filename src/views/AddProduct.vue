@@ -72,20 +72,45 @@ export default Vue.extend({
     return {
       categories: this.$store.state.categories,
       suppliers: this.$store.state.suppliers,
+      id : null,
       product: {
-        name: null,
-        description: null,
-        supplier_id: null,
-        category_id: null,
-        unit_price: null,
-        unit_weight: null,
-        stock_quantity: 0,
+          name: null,
+          description: null,
+          supplier_id: null,
+          category_id: null,
+          unit_price: null,
+          unit_weight: null,
+          stock_quantity: 0,
+        
       },
     };
   },
+  created(){
+    if(this.$store.state.product != null){
+      this.id = this.$store.state.product.id;
+      this.product.name = this.$store.state.product.name;
+      this.product.description = this.$store.state.product.description;
+      this.product.supplier_id = this.$store.state.product.supplier_id;
+      this.product.category_id = this.$store.state.product.category_id;
+      this.product.unit_price = this.$store.state.product.unit_price;
+      this.product.unit_weight = this.$store.state.product.unit_weight;
+      this.product.stock_quantity = this.$store.state.product.stock_quantity;
+    }
+  },
   methods: {
-    addProduct: function () {
-      this.$store.dispatch("addProduct", this.$data.product);
+    addProduct: async function () {
+      if (this.id != null)
+      {
+        await this.$store.dispatch("updateProducts", this.$data);
+        this.$store.commit('setActiveMenu', 'products')
+        this.$store.dispatch('getProductsByCategories');
+        this.$router.push('/menu');
+      }
+      else
+      {
+        this.$store.dispatch("addProduct", this.$data.product);
+      }
+      
     },
   },
 });

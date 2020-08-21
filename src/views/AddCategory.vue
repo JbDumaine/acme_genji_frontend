@@ -37,7 +37,7 @@ export default Vue.extend({
     {
       this.id = this.$store.state.category.id;
       this.form.name = this.$store.state.category.name;
-    this.form.description = this.$store.state.category.description;
+      this.form.description = this.$store.state.category.description;
     }
     
   },

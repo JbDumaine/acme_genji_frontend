@@ -1,5 +1,8 @@
 <template>
 <div id="receptions">
+    <a @click="add()" class="d-flex justify-content-end m-3">
+        <font-awesome-icon icon="plus-circle"/>
+      </a>
     <div class="row align-items-center justify-content-between border-bottom mb-2">
         <div class="col-4 "><b>Numéro de réception</b></div>
         <div class="col-4 "><b>Date de réception</b></div>

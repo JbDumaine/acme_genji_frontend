@@ -9,8 +9,7 @@
             </select>
         </div>
         <div class="m-3">
-            <input class="mr-2" />
-            <button class="btn btn-primary"> Rechercher</button>
+            <a @click="add()"><font-awesome-icon icon="plus-circle" /></a>
         </div>
     </div>
 
@@ -26,18 +25,18 @@
             <div class="col-3"><b>Quantité</b></div>
         </div>
         <div v-for="product in item.products" :key="product.id">
-            <div class="product row align-items-center justify-content-between mb-3 border-bottom" @click="productPage(2)">
-                <div class="col-4 row align-items-center">
+            <div class="product row align-items-center justify-content-between mb-3 border-bottom">
+                <div class="col-4 row align-items-center" @click="productPage(product.id)">
                     <img src="../assets/image_not_found.png" class="mr-2" />
                     <h5>{{ product.name }}</h5>
                 </div>
-                <div class="col-3">
+                <div class="col-3" @click="productPage(product.id)">
                     {{ product.unit_price }}€
                 </div>
-                <div class="col-3">
+                <div class="col-3" @click="productPage(product.id)">
                     {{ product.stock_quantity }} pcs
                 </div>
-                <font-awesome-icon icon="edit" @onclick="edit(category.id)"/>
+                <a @click="edit(product)"><font-awesome-icon icon="edit"/></a>
             </div>
         </div>
     </div>
@@ -67,6 +66,14 @@ export default {
             } else {
                 this.$store.dispatch('getProductsByCategories');
             }
+        },
+        edit: function(product){
+            this.$store.commit('setProduct', product);
+            this.$router.push('/add-product');
+        },
+        add: function(){
+            this.$store.commit('setProduct', null);
+            this.$router.push('/add-product');
         }
     }    
 }
@@ -83,5 +90,9 @@ img {
 .largeProgress {
     width: 3rem; 
     height: 3rem;
+}
+.fa-plus-circle {
+    width : 30px;
+    height: auto ;
 }
 </style>
