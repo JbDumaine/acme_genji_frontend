@@ -71,6 +71,12 @@ const routes = [
         path:   '/update-supplier',
         name: 'updateSupplier',
         component: () => import('../views/UpdateSupplier.vue'),
+    },
+
+    {
+        path:   '/add-category',
+        name: 'addCategory',
+        component: () => import('../views/AddCategory.vue'),
     }
 ];
 
