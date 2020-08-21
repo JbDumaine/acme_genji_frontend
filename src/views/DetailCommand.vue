@@ -22,20 +22,40 @@
                 <p>Date de livraison : </p>
                 <p> {{this.$store.state.command.delivery_date}}</p>
             </div>
-            <table>
-                <thead>
-                    <th colspan="5" class="solo-title">Liste des produits commandés</th>
-                </thead>
-                <tbody>
-                    <tr v-for="product in this.$store.state.command.products" :key="product.id">
-                        <td>{{product.name}}</td>
-                        <td>{{product.unit_weight}}</td>
-                        <td>{{product.unit_price}}</td>
-                        <td>{{product.description}}</td>
-                        <td>{{product.pivot.product_quantity}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="receptions">
+                <div class="row align-items-center justify-content-between border-bottom mb-2">
+                    <div class="col-2 "><b>Nom du produit</b></div>
+                    <div class="col-2 "><b>Poids unitaire</b></div>
+                    <div class="col-2 "><b>Prix unitaire</b></div>
+                    <div class="col-2 "><b>Description du produit</b></div>
+                    <div class="col-2 "><b>Quantité du produit</b></div>
+                </div>
+
+                <div v-for="product in this.$store.state.command.products" :key="product.id">
+                    <div class="reception row align-items-center justify-content-between mb-3 border-bottom">
+                        <div class="col-2">
+                            {{product.name}}
+                        </div>
+                        <div class="col-2">
+                            {{product.unit_weight}}
+                        </div>
+                        <div class="col-2">
+                            {{product.unit_price}}
+                        </div>
+                        <div class="col-2">
+                            {{product.description}}
+                        </div>
+                        <div class="col-2">
+                            {{product.pivot.product_quantity}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="bouton" class="row justify-content-around mt-5">
+                <button class="btn btn-dark col-3">Fiche préparation</button>
+                <button class="btn btn-dark col-3">Bon de livraison</button>
+                <button class="btn btn-dark col-3">Générer facture</button>
+            </div>
         </div>
     </div>
     
