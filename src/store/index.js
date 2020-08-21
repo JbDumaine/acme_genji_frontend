@@ -106,6 +106,7 @@ export default new Vuex.Store({
         setReception(state, term) {
             state.reception = term;
         },
+
         setHomeData(state, term) {
             state.homeData = term;
         }
@@ -163,17 +164,15 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
+
         getCommand(context, commandId) {
             let myInit = {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${context.state.requestToken}`,
-                },
-                body: JSON.stringify({
-                    commandId: commandId
-                })
+                }
             };
-            fetch(AppConst.API_URL + "command/" + commandId, myInit)
+            fetch(AppConst.API_URL + "commands/" + commandId, myInit)
                 .then(result => result.json())
                 .then((json) => {
                     context.commit('setCommand', json)
@@ -253,6 +252,23 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
+        getReception(context, receptionId) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                }
+            };
+            fetch(AppConst.API_URL + "stock_receptions/" + receptionId, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setReception', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
 
         getSuppliers(context) {
             let myInit = {
@@ -265,6 +281,23 @@ export default new Vuex.Store({
                 .then((result) => result.json())
                 .then((json) => {
                     context.commit("setSuppliers", json);
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        getSupplier(context, supplierId) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                }
+            };
+            fetch(AppConst.API_URL + "suppliers/" + supplierId, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setSupplier', json)
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);
@@ -289,6 +322,23 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
+        getStore(context, storeId) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                }
+            };
+            fetch(AppConst.API_URL + "stores/" + storeId, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setProduct', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
 
         getCategories(context) {
             let myInit = {
@@ -307,6 +357,24 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
+        getCategory(context, categoryId) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${context.state.requestToken}`,
+                }
+            };
+            fetch(AppConst.API_URL + "categories/" + categoryId, myInit)
+                .then(result => result.json())
+                .then((json) => {
+                    context.commit('setCategory', json)
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+
         getHomeData(context) {
             let myInit = {
                 headers: {

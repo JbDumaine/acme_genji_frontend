@@ -42,6 +42,11 @@ const routes = [
         name: 'StockReception',
         component: () => import('../views/StockReception.vue'),
     },
+    {
+        path:   '/stock-reception/:receptionId',
+        name: 'StockReceptionDetails',
+        component: () => import('../views/DetailStockReception.vue'),
+    },
 
     {
         path:   '/add-product',
