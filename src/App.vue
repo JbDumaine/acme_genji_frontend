@@ -21,7 +21,7 @@ export default {
     updated() {
         if (this.$store.state.userLogged == false && !localStorage.getItem('access_token')) {
             this.$router.push('/login')
-        } else if (this.$store.state.userLogged == false && localStorage.getItem('access_token')) {
+        } else if (this.$store.state.userLogged == false && localStorage.getItem('access_token')&& localStorage.getItem('user')) {
             this.$store.state.requestToken = localStorage.getItem('access_token');
             this.$store.state.user = JSON.parse(localStorage.getItem('user'));
             this.$store.state.userLogged = true;
