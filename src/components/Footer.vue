@@ -24,5 +24,8 @@ export default {
 footer{
     min-height : 80px;
     background-color : rgb(0,0,0);
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
 }
 </style>
