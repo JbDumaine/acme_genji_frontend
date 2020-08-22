@@ -39,7 +39,6 @@
       <input
         v-model="product.unit_price"
         type="number"
-        step="0.01"
         name="price-product"
         id="price-product"
       />

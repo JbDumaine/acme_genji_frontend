@@ -20,7 +20,6 @@
         <input
           v-model="product_quantity"
           type="number"
-          step="0.01"
           name="price-product"
           id="price-product"
         />
