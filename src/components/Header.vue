@@ -40,7 +40,7 @@ export default {
 
         },
         goBasket: function(){
-            this.$router.push("/basket");
+            this.$router.push("/cart");
         },
         backToHome: function() {
             this.$router.push("/");

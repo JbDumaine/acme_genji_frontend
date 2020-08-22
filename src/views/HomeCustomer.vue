@@ -4,61 +4,48 @@
         <div class="card-wrapper">
             
              <b-card
-                @click="ProductDetails()"
                 header="featured"
                 tag="article"
-                
             >
                 <div class="img-product">
                     
                 </div>
                 <div class="btn-quantity">
-                    <b-button href="#" variant="light" class="btn-add"><img src="../assets/icon-plus-64.png" alt=""></b-button>
+                    <b-button variant="light" class="btn-add"><img src="../assets/icon-plus-64.png" alt=""></b-button>
                     <b-card-text> 20 items restants </b-card-text>
                 </div>
                 
             </b-card>
             <b-card
-                @click="ProductDetails()"
                 header="featured"
                 tag="article"
-                
             >
                 <div class="img-product">
                     
                 </div>
                 <div class="btn-quantity">
-                    <b-button href="#" variant="light" class="btn-add"><img src="../assets/icon-plus-64.png" alt=""></b-button>
+                    <b-button variant="light" class="btn-add"><img src="../assets/icon-plus-64.png" alt=""></b-button>
                     <b-card-text> 20 items restants </b-card-text>
                 </div>
                 
             </b-card>
-            <b-card
-                @click="ProductDetails()"
-                header="featured"
-                tag="article"
-                
-            >
+            <b-card header="featured" tag="article">
                 <div class="img-product">
-                    
                 </div>
                 <div class="btn-quantity">
-                    <b-button href="#" variant="light" class="btn-add"><img src="../assets/icon-plus-64.png" alt=""></b-button>
+                    <b-button variant="light" class="btn-add"><img src="../assets/icon-plus-64.png" alt=""></b-button>
                     <b-card-text> 20 items restants </b-card-text>
                 </div>
-                
             </b-card>
             <b-card
-                @click="ProductDetails()"
                 header="featured"
                 tag="article"
-                
             >
                 <div class="img-product">
                     
                 </div>
                 <div class="btn-quantity">
-                    <b-button href="#" variant="light" class="btn-add"><img src="../assets/icon-plus-64.png" alt=""></b-button>
+                    <b-button variant="light" class="btn-add"><img src="../assets/icon-plus-64.png" alt=""></b-button>
                     <b-card-text> 20 items restants </b-card-text>
                 </div>
                 
@@ -71,12 +58,7 @@ import Vue from 'vue'
 //import HeaderCustomer from './components/HeaderCustomer.vue'
 
 export default Vue.extend({
-    name:"HomeCustomer",
-    methods: {
-        ProductDetails: function(){
-            this.$router.push("/product-details");
-        }
-    }
+    name:"HomeCustomer"
 })
 </script>
 
