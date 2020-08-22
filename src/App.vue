@@ -23,8 +23,17 @@ export default {
             this.$router.push('/login')
         } else if (this.$store.state.userLogged == false && localStorage.getItem('access_token')&& localStorage.getItem('user')) {
             this.$store.state.requestToken = localStorage.getItem('access_token');
-            this.$store.state.user = JSON.parse(localStorage.getItem('user'));
+            let user = localStorage.getItem('user')
+            this.$store.state.user = JSON.parse(user);
             this.$store.state.userLogged = true;
+            if(this.$store.state.user.role_id != 3 ){
+                this.$router.push('/')
+                this.$store.dispatch('getHomeData');
+            }
+            else{
+                this.$router.push('/customer-home')
+            }
+            
         }
     }
 }
