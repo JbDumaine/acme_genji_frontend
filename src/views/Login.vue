@@ -1,5 +1,5 @@
 <template>
-<div id="login" class="container d-flex justify-content-center mt-5">
+<div id="login" class="container d-flex justify-content-center pt-5">
 
     <div class="card bg-ligth w-50">
         <div id="header" class="card-header bg-primary mb-4">

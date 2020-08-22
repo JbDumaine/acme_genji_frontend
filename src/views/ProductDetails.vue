@@ -7,8 +7,8 @@
         <h1>DETAILS PRODUIT:</h1>
         <h3>{{this.$store.state.product.name}}</h3>
         <div class="details_category_supplier">
-            <h5>{{this.$store.state.product.category.name}}</h5>
-            <h5>{{this.$store.state.product.supplier.name}}</h5>
+            <h5>Catégorie : {{this.$store.state.product.category.name}}</h5>
+            <h5>Fournisseur : {{this.$store.state.product.supplier.name}}</h5>
         </div>
         <div class="details_content_wrapper">
             <div class="small_img_container">
@@ -23,14 +23,14 @@
             </div>
             <div class="details_product_content_container">
                 <div class="details_price_weight_container">
-                    <h4>{{this.$store.state.product.unit_price}}</h4>
-                    <h5>{{this.$store.state.product.unit_weight}}</h5>
+                    <h5>Prix à l'unité : {{this.$store.state.product.unit_price}}€</h5>
+                    <h5>Poids à l'unité : {{this.$store.state.product.unit_weight}}kg</h5>
                 </div>
                 <h3>Description du produit</h3>
                 <span>
                     {{this.$store.state.product.description}}
                 </span>
-                <h5 class="detail_product_quantity">Quantité de produit : {{this.$store.state.product.quantity}}</h5>
+                <h5 class="detail_product_quantity">Quantité de produit : {{this.$store.state.product.stock_quantity}}</h5>
             </div>
         </div>
     </div>
@@ -60,6 +60,7 @@ export default Vue.extend({
     .details_category_supplier{
         width: 20%;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
     }
 
@@ -78,6 +79,7 @@ export default Vue.extend({
 
     .details_price_weight_container{
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         margin-bottom: 15%;
     }

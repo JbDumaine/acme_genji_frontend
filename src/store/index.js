@@ -38,7 +38,6 @@ export default new Vuex.Store({
         store: null,
         category: null,
         reception: null,
-        userVac: null,
     },
     mutations: {
 
@@ -121,9 +120,6 @@ export default new Vuex.Store({
         setUsers(state, term) {
             state.users = term;
         },
-        setUserVac(state, term) {
-            state.userVac = term
-        }
     },
 
     actions: {
@@ -415,23 +411,6 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
-        getUserVac(context, userId) {
-            let myInit = {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${context.state.requestToken}`,
-                },
-            };
-            fetch(AppConst.API_URL + "users/" + userId, myInit)
-                .then((result) => result.json())
-                .then((json) => {
-                    context.commit("setUserVac", json);
-                })
-                .catch((error) => {
-                    console.error(`Une erreur s'est produite`);
-                    console.log(error);
-                });
-        },
         updateCategory(context, data) {
             let myInit = {
                 headers: {
@@ -634,7 +613,7 @@ export default new Vuex.Store({
                 .then((result) => result.json())
                 .then((json) => {
                     console.log(json);
-                    router.push("Menu");
+                    router.push("/menu");
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);

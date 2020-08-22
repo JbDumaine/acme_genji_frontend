@@ -59,7 +59,7 @@ img {
   width: 90px;
   height: 90px;
 }
-.supplier {
+.store {
   cursor: pointer;
 }
 </style>
