@@ -39,7 +39,6 @@ export default {
       this.$router.push("/add-user");
     },
     add: function () {
-      this.$store.commit("setUser", null);
       this.$router.push("/add-user");
     },
   },
