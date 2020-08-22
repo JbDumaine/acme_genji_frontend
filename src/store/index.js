@@ -655,7 +655,7 @@ export default new Vuex.Store({
                 .then((result) => result.json())
                 .then((json) => {
                     console.log(json);
-                    router.push("Menu");
+                    router.push("customer-home");
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);
