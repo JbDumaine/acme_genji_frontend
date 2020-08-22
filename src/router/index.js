@@ -111,6 +111,24 @@ const routes = [
         path:   '/detail-store/:storeId',
         name: 'DetailStore',
         component: () => import('../views/DetailStore.vue'),
+    },
+
+    {
+        path:   '/fiche-prepa-command',
+        name: 'FichePrepa',
+        component: () => import('../views/FichePrepaCommand.vue'),
+    },
+
+    {
+        path:   '/bon-livraison',
+        name: 'BonLivraison',
+        component: () => import('../views/BonLivraisonCommand.vue'),
+    },
+
+    {
+        path:   '/facture-command',
+        name: 'FactureCommand',
+        component: () => import('../views/FactureCommand.vue'),
     }
 ];
 

@@ -611,7 +611,8 @@ export default new Vuex.Store({
                 'last_name': data.lastname,
                 'email': data.email,
                 'password': data.password,
-                'password_confirmation': data.password
+                'password_confirmation': data.password,
+                'role_id':data.role_id
             };
             let formBody = [];
             for (var property in details) {
@@ -624,11 +625,34 @@ export default new Vuex.Store({
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
                     Authorization: `Bearer ${context.state.requestToken}`,
+                    "Access-Control-Allow-Origin": "*"
                 },
                 method: "POST",
                 body: formBody,
             };
             fetch(AppConst.API_URL + "register", myInit)
+                .then((result) => result.json())
+                .then((json) => {
+                    console.log(json);
+                    router.push("Menu");
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        addStockReception(context, data) {
+            delete data.products.name;
+            console.log(data.products)
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${context.state.requestToken}`,
+                },
+                method: "POST",
+                body: JSON.stringify(data),
+            };
+            fetch(AppConst.API_URL + "stock_receptions", myInit)
                 .then((result) => result.json())
                 .then((json) => {
                     console.log(json);

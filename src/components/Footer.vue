@@ -23,7 +23,6 @@ export default {
 <style scoped>
 footer{
     min-height : 80px;
-    margin-bottom : 30px;
     background-color : rgb(0,0,0);
 }
 </style>
