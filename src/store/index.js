@@ -30,6 +30,7 @@ export default new Vuex.Store({
         receptions: null,
         homeData: null,
         fluxHistory: null,
+        users : null,
 
         command: null,
         supplier: null,
@@ -37,6 +38,7 @@ export default new Vuex.Store({
         store: null,
         category: null,
         reception: null,
+        userVac:null,
     },
     mutations: {
 
@@ -114,6 +116,13 @@ export default new Vuex.Store({
 
         setHomeData(state, term) {
             state.homeData = term;
+        },
+
+        setUsers(state, term) {
+            state.users = term;
+        },
+        setUserVac(state, term){
+            state.userVac = term
         }
     },
 
@@ -383,6 +392,40 @@ export default new Vuex.Store({
                 .then((result) => result.json())
                 .then((json) => {
                     context.commit("setFluxHistory", json);
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        getUsers(context) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${context.state.requestToken}`,
+                },
+            };
+            fetch(AppConst.API_URL + "users", myInit)
+                .then((result) => result.json())
+                .then((json) => {
+                    context.commit("setUsers", json);
+                })
+                .catch((error) => {
+                    console.error(`Une erreur s'est produite`);
+                    console.log(error);
+                });
+        },
+        getUserVac(context, userId) {
+            let myInit = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${context.state.requestToken}`,
+                },
+            };
+            fetch(AppConst.API_URL + "users/" + userId, myInit)
+                .then((result) => result.json())
+                .then((json) => {
+                    context.commit("setUserVac", json);
                 })
                 .catch((error) => {
                     console.error(`Une erreur s'est produite`);

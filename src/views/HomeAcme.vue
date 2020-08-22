@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div v-if="this.$store.state.homeData" class="container">
     <div >
         <b-card-group deck>
             <b-card header="Produits" header-tag="header" title="Produits" @click="redirectToMenu('products')">

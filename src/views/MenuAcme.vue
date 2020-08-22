@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div v-if="this.$store.state.homeData" class="container">
     <b-tabs content-class="mt-3" fill>
         <b-tab class="container" @click="redirectToHome()">
             <template v-slot:title>
@@ -56,6 +56,14 @@ export default {
         Suppliers,
         Users,
         Stores
+    },
+    created: function(){
+        if(this.$store.state.user && this.$store.state.user.role_id == 2){
+            this.$store.dispatch("getCategories");
+            this.$store.dispatch("getStores");
+            this.$store.dispatch("getSuppliers");
+            this.$store.dispatch("getUsers");
+        }
     },
     methods: {
         redirectToHome: function () {
