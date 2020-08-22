@@ -568,7 +568,8 @@ export default new Vuex.Store({
                 'last_name': data.lastname,
                 'email': data.email,
                 'password': data.password,
-                'password_confirmation': data.password
+                'password_confirmation': data.password,
+                'role_id':data.role_id
             };
             let formBody = [];
             for (var property in details) {
@@ -581,6 +582,7 @@ export default new Vuex.Store({
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
                     Authorization: `Bearer ${context.state.requestToken}`,
+                    "Access-Control-Allow-Origin": "*"
                 },
                 method: "POST",
                 body: formBody,
