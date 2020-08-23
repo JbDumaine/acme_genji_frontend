@@ -22,7 +22,7 @@
                 <p>Date de livraison : </p>
                 <p> {{this.$store.state.command.delivery_date}}</p>
             </div>
-            <div id="receptions">
+            <div id="commands">
                 <div class="row align-items-center justify-content-between border-bottom mb-2">
                     <div class="col-2 "><b>Nom du produit</b></div>
                     <div class="col-2 "><b>Poids unitaire</b></div>
