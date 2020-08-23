@@ -1,31 +1,42 @@
 <template>
-    <div>
-        <div class="detail-store-intel">
-            <h2>{{this.$store.state.store.name}}</h2>
-            <span>{{this.$store.state.store.address}} {{this.$store.state.store.city.name}}</span>
+    <div  class="detail-store-container">
+
+        <div class="d-flex justify-content-center mb-3">
+            <b-spinner v-if="!this.$store.state.store" class="d-flex justify-content-center mb-3 largeProgress"></b-spinner>
         </div>
-        <div class="detail-store-table">
-            <h4>Détails des commandes</h4>
-            <table>
-                <thead>
-                    <th colspan="2">Réception de stock</th>
-                </thead>
-                <tbody>
-                    <div v-for="command in this.$store.state.store.commands" :key="command.id">
-                        <tr>
-                            <td class="solo-title" colspan="2">Commande {{command.command_number}}</td>
-                        </tr>
-                        <tr>
-                            <td>Date de création</td>
-                            <td>{{command.created_at}}</td>
-                        </tr>
-                        <tr>
-                            <td>Date de réception</td>
-                            <td>{{command.delivery_date}}</td>
-                        </tr>
+
+        <div class="detail-store-title pl-4">
+            <h2>{{this.$store.state.store.name}}</h2>
+            <p>Adresse du fournisseur : </p>
+            <p>
+                {{this.$store.state.store.address}}
+                <br>
+                {{this.$store.state.store.city.name}}
+            </p>
+        </div>
+        <div class="detail-store-intel pl-5">
+            <h3 class="my-3">Détails des commandes</h3>
+            <div id="suppliers">
+                <div class="row align-items-center justify-content-between border-bottom mb-2">
+                    <div class="col-2 "><b>Numéro de commande</b></div>
+                    <div class="col-2 "><b>Date de création</b></div>
+                    <div class="col-2 "><b>Date de réception</b></div>
+                </div>
+
+                <div v-for="command in this.$store.state.store.commands" :key="command.id">
+                    <div class="reception row align-items-center justify-content-between mb-3 border-bottom">
+                        <div class="col-2">
+                            {{command.command_number}}
+                        </div>
+                        <div class="col-2">
+                            {{command.created_at}}
+                        </div>
+                        <div class="col-2">
+                            {{command.delivery_date}}
+                        </div>
                     </div>
-                </tbody>
-            </table>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -48,7 +59,6 @@ export default Vue.extend({
 <style scoped>
     .detail-store-intel{
         align-items: center;
-        margin-left: 40%;
     }
 
     .detail-store-intel > h4{
