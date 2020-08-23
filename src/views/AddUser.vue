@@ -3,11 +3,11 @@
     <h2>Ajout d'un utilisateur</h2>
     <div class="form-group">
       <label for="lastname-user">Nom :</label>
-      <input v-model="form.firstname" type="text" name="name-user" id="name-user" />
+      <input v-model="form.firstname" type="text" name="lastname-user" id="lastname-user" />
     </div>
     <div class="form-group">
       <label for="firstname-user">Prénom:</label>
-      <input v-model="form.lastname" name="firstname-use" id="firstname-use" />
+      <input v-model="form.lastname" name="firstname-user" id="firstname-user" />
     </div>
     <div class="form-group">
       <label for="email-user">Email:</label>
@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
       <label for="password-user">Password:</label>
-      <input type="password" v-model="form.password" name="password-use" id="password-use" />
+      <input type="password" v-model="form.password" name="password-user" id="password-user" />
     </div>
     <div class="form-group">
       <label for="user-role">Role:</label>
