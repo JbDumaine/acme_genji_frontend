@@ -1,26 +1,46 @@
 <template>
-    <div>
-        <h2  class="detail-supplier-title">{{this.$store.state.supplier.name}}</h2>
-        <div class="detail-supplier-intel">
-            <h4>Adresse du fournisseur : </h4>
-            <br>{{this.$store.state.supplier.address}}
-            <br>{{this.$store.state.supplier.city.name}}
+    <div  class="detail-supplier-container">
+
+        <div class="d-flex justify-content-center mb-3">
+            <b-spinner v-if="!this.$store.state.supplier" class="d-flex justify-content-center mb-3 largeProgress"></b-spinner>
         </div>
-        <div class="detail-supplier-table">
-            <h4>Tableau des réceptions de stock</h4>
-            <table>
-                <thead>
-                    <th colspan="2">Produits proposés</th>
-                </thead>
-                <tbody>
-                    <tr v-for="product in this.$store.state.supplier.products" :key="product.id">
-                        <td>{{product.name}}</td>
-                        <td>{{product.unit_weight}}</td>
-                        <td>{{product.unit_price}}</td>
-                        <td>{{product.description}}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="detail-supplier-title pl-4">
+            <h2>{{this.$store.state.supplier.name}}</h2>
+            <p>Adresse du fournisseur : </p>
+            <p>
+                {{this.$store.state.supplier.address}}
+                <br>
+                {{this.$store.state.supplier.city.name}}
+            </p>
+        </div>
+        <div class="detail-supplier-intel">
+            <h3 class="my-3">Produits proposés</h3>
+            <div id="suppliers">
+                <div class="row align-items-center justify-content-between border-bottom mb-2">
+                    <div class="col-2 "><b>Nom du produit</b></div>
+                    <div class="col-2 "><b>Poids unitaire</b></div>
+                    <div class="col-2 "><b>Prix unitaire</b></div>
+                    <div class="col-2 "><b>Description du produit</b></div>
+                </div>
+
+                <div v-for="product in this.$store.state.supplier.products" :key="product.id">
+                    <div class="reception row align-items-center justify-content-between mb-3 border-bottom">
+                        <div class="col-2">
+                            {{product.name}}
+                        </div>
+                        <div class="col-2">
+                            {{product.unit_weight}}
+                        </div>
+                        <div class="col-2">
+                            {{product.unit_price}}
+                        </div>
+                        <div class="col-2">
+                            {{product.description}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -40,10 +60,6 @@ export default Vue.extend({
 
 <style scoped>
 
-    .detail-supplier-title{
-        margin-left: 40%;
-    }
-
     .detail-supplier-intel{
         display: flex;
         align-items: center;
@@ -55,14 +71,5 @@ export default Vue.extend({
 
     .detail-supplier-intel > h4{
         margin-right: 25px;
-    }
-
-    table, th, tr, td, tbody{
-        border: 2px solid #000;
-    }
-
-    .solo-title {
-        text-align: center;
-        background-color: #ECECEC;
     }
 </style>
