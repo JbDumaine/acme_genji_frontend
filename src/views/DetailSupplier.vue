@@ -14,8 +14,9 @@
                 {{this.$store.state.supplier.city.name}}
             </p>
         </div>
-        <div class="detail-supplier-intel">
-            <h3 class="my-3">Produits proposés</h3>
+        <h3 class="my-3 pl-4">Produits proposés</h3>
+        <div class="detail-supplier-intel pl-5">
+
             <div id="suppliers">
                 <div class="row align-items-center justify-content-between border-bottom mb-2">
                     <div class="col-2 "><b>Nom du produit</b></div>
